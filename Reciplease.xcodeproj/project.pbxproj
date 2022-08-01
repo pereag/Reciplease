@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D8BB4FC828854CE7003C5D60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4FC728854CE7003C5D60 /* AppDelegate.swift */; };
-		D8BB4FCA28854CE7003C5D60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4FC928854CE7003C5D60 /* SceneDelegate.swift */; };
-		D8BB4FCC28854CE7003C5D60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4FCB28854CE7003C5D60 /* ViewController.swift */; };
 		D8BB4FCF28854CE7003C5D60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BB4FCD28854CE7003C5D60 /* Main.storyboard */; };
 		D8BB4FD228854CE7003C5D60 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4FD028854CE7003C5D60 /* Reciplease.xcdatamodeld */; };
 		D8BB4FD428854CEF003C5D60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BB4FD328854CEF003C5D60 /* Assets.xcassets */; };
@@ -17,6 +15,7 @@
 		D8BB4FE228854CF0003C5D60 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4FE128854CF0003C5D60 /* RecipleaseTests.swift */; };
 		D8BB4FEC28854CF0003C5D60 /* RecipleaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4FEB28854CF0003C5D60 /* RecipleaseUITests.swift */; };
 		D8BB4FEE28854CF0003C5D60 /* RecipleaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4FED28854CF0003C5D60 /* RecipleaseUITestsLaunchTests.swift */; };
+		D8F5372A2897C42600CFFBC1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F537292897C42600CFFBC1 /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +38,6 @@
 /* Begin PBXFileReference section */
 		D8BB4FC428854CE7003C5D60 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BB4FC728854CE7003C5D60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D8BB4FC928854CE7003C5D60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D8BB4FCB28854CE7003C5D60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D8BB4FCE28854CE7003C5D60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8BB4FD128854CE7003C5D60 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
 		D8BB4FD328854CEF003C5D60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +48,7 @@
 		D8BB4FE728854CF0003C5D60 /* RecipleaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BB4FEB28854CF0003C5D60 /* RecipleaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITests.swift; sourceTree = "<group>"; };
 		D8BB4FED28854CF0003C5D60 /* RecipleaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D8F537292897C42600CFFBC1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +99,8 @@
 		D8BB4FC628854CE7003C5D60 /* Reciplease */ = {
 			isa = PBXGroup;
 			children = (
-				D8BB4FC728854CE7003C5D60 /* AppDelegate.swift */,
-				D8BB4FC928854CE7003C5D60 /* SceneDelegate.swift */,
-				D8BB4FCB28854CE7003C5D60 /* ViewController.swift */,
-				D8BB4FCD28854CE7003C5D60 /* Main.storyboard */,
+				D8F537272897C2B100CFFBC1 /* Sources */,
+				D8F537282897C2C500CFFBC1 /* Navigation */,
 				D8BB4FD328854CEF003C5D60 /* Assets.xcassets */,
 				D8BB4FD528854CEF003C5D60 /* LaunchScreen.storyboard */,
 				D8BB4FD828854CEF003C5D60 /* Info.plist */,
@@ -128,6 +124,23 @@
 				D8BB4FED28854CF0003C5D60 /* RecipleaseUITestsLaunchTests.swift */,
 			);
 			path = RecipleaseUITests;
+			sourceTree = "<group>";
+		};
+		D8F537272897C2B100CFFBC1 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB4FCD28854CE7003C5D60 /* Main.storyboard */,
+				D8BB4FC728854CE7003C5D60 /* AppDelegate.swift */,
+				D8F537292897C42600CFFBC1 /* AppCoordinator.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		D8F537282897C2C500CFFBC1 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,10 +274,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8F5372A2897C42600CFFBC1 /* AppCoordinator.swift in Sources */,
 				D8BB4FD228854CE7003C5D60 /* Reciplease.xcdatamodeld in Sources */,
-				D8BB4FCC28854CE7003C5D60 /* ViewController.swift in Sources */,
 				D8BB4FC828854CE7003C5D60 /* AppDelegate.swift in Sources */,
-				D8BB4FCA28854CE7003C5D60 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,8 +459,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,7 +472,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -475,8 +489,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,7 +502,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
