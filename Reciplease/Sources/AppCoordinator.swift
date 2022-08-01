@@ -12,8 +12,7 @@ final class AppCoordinator {
     // MARK: - Private properties
 
     private unowned var appDelegate: AppDelegate
-
-    //private var homeCoordinator: HomeCoordinator?
+    private var homeCoordinator: HomeCoordinator?
 
     // MARK: - Initializer
 
@@ -24,19 +23,14 @@ final class AppCoordinator {
     // MARK: - Coordinator
 
     func start() {
-        //appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
-        //appDelegate.window!.rootViewController = UIViewController()
-        //appDelegate.window!.makeKeyAndVisible()
+        appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
+        appDelegate.window!.makeKeyAndVisible()
 
-        if ProcessInfo.processInfo.environment["IS_RUNNING_UNIT_TESTS"] == "YES" {
-            return
-        }
-
-//        showHome()
+        showHome()
     }
 
     private func showHome() {
-        //homeCoordinator = HomeCoordinator(presenter: appDelegate.window!)
-        //homeCoordinator?.start()
+        homeCoordinator = HomeCoordinator(presenter: appDelegate.window!)
+        homeCoordinator?.start()
     }
 }
