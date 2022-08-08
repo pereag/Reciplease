@@ -7,9 +7,14 @@
 
 import Foundation
 
-protocol SearchRepositoryType {}
+struct RecipeResponse {}
+
+protocol SearchRepositoryType {
+    func getRecipe(for ingredients: [String], callback: (Result<RecipeResponse, Error>) -> Void)
+}
 
 final class SearchRepository: SearchRepositoryType {
+    
 
 //    private let network: NetworkType
 //
@@ -17,7 +22,7 @@ final class SearchRepository: SearchRepositoryType {
 //        self.network = network
 //    }
 //
-//    func requestStuffs(callBack: @escaping ([Stuff]) -> Void, failure: @escaping (() -> Void)) {
-//        network.getStuffs(success: callBack, failure: failure)
-//    }
+    func getRecipe(for ingredients: [String], callback: (Result<RecipeResponse, Error>) -> Void) {
+        // TODO :)
+    }
 }

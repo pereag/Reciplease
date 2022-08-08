@@ -13,6 +13,11 @@ final class SearchViewModel {
 
     private let repository: SearchRepositoryType
     private weak var delegate: SearchViewControllerDelegate?
+    public var ingredients: [String] = [] {
+        didSet {
+            items?(ingredients)
+        }
+    }
 
     // MARK: - Initializer
 
@@ -22,25 +27,59 @@ final class SearchViewModel {
     ) {
         self.repository = repository
         self.delegate = delegate
+        self.ingredients = []
     }
-   
-    // MARK: - Properties
-
 
     // MARK: - Outputs
+    
+    var titleText: ((String) -> Void)?
+    var searchPlaceholderText: ((String) -> Void)?
+    var subtitleText: ((String) -> Void)?
+    var addButtonText: ((String) -> Void)?
+    var clearButtonText: ((String) -> Void)?
+    var searchButtontext: ((String) -> Void)?
+    var items: (([String]) -> Void)?
 
     // MARK: - Inputs
 
     func viewDidLoad() {
-        
+        titleText?(Constants.title)
+        searchPlaceholderText?(Constants.searchPlaceholder)
+        subtitleText?(Constants.subtitle)
+        addButtonText?(Constants.addButton)
+        clearButtonText?(Constants.clearButton)
+        searchButtontext?(Constants.searchButton)
+        ingredients = []
     }
 
     func didPressSearch() {
-        delegate?.didPressSearch()
+        repository.getRecipe(for: ingredients, callback: { [weak self] result in
+            switch result {
+            case let .success(response):
+                delegate?.didPressSearch()
+            case let .failure(error):
+                fatalError(error.localizedDescription)
+            }
+        })
     }
+    
+    func didPressAdd(item: String) {
+        guard !ingredients.contains(item) else { return }
+        ingredients.append(item)
+    }
+    
+    func didPressClear() {
+        ingredients.removeAll()
+    }
+}
 
-    // MARK: - Utils
-
-// MARK: - Extension
-
+private extension SearchViewModel {
+    enum Constants {
+        static var title: String { "What's in your fridge?" }
+        static var searchPlaceholder: String { "Lemon, Cheese, Sausages..." }
+        static var subtitle: String { "Your ingredients" }
+        static var addButton: String { "Add" }
+        static var searchButton: String { "Search for recipes" }
+        static var clearButton: String { "Clear" }
+    }
 }

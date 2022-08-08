@@ -34,6 +34,9 @@
                                             </backgroundConfiguration>
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="didPressClear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JZ0-NS-NC8"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BR-xh-wGI">
                                         <rect key="frame" x="12" y="634" width="404" height="31"/>
@@ -48,9 +51,28 @@
                                             <action selector="didPressSearch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SiH-U7-V82"/>
                                         </connections>
                                     </button>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="-1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3Iw-EV-cbQ">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="-1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3Iw-EV-cbQ" customClass="ingredientsTableView">
                                         <rect key="frame" x="12" y="66" width="404" height="556"/>
                                         <color key="sectionIndexBackgroundColor" red="0.26830808080000002" green="0.2193036404" blue="0.15814187930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="V6l-xp-ECE" style="IBUITableViewCellStyleDefault" id="cez-iA-MhR">
+                                                <rect key="frame" x="0.0" y="44.666666030883789" width="404" height="43.666667938232422"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cez-iA-MhR" id="bXS-wQ-hvE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="404" height="43.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V6l-xp-ECE">
+                                                            <rect key="frame" x="20" y="0.0" width="364" height="43.666667938232422"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.26830808080808077" green="0.21930364040926731" blue="0.15814187925414602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -72,19 +94,18 @@
                                 <rect key="frame" x="0.0" y="44" width="428" height="161"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lemon, Cheese, Sausages ..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ks5-FZ-6tv">
-                                        <rect key="frame" x="12" y="116" width="320" height="34"/>
+                                        <rect key="frame" x="12" y="116" width="328" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="Q0j-gW-Tra"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="cNe-AP-TcS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P42-AW-a2A">
-                                        <rect key="frame" x="366" y="118" width="50" height="31"/>
+                                        <rect key="frame" x="357" y="118" width="59" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="WyC-8p-HTM"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="iN3-IL-5s3"/>
+                                            <constraint firstAttribute="width" constant="59" id="eHq-41-gSp"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Add">
@@ -93,6 +114,9 @@
                                             </backgroundConfiguration>
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="didPressAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HnJ-ZK-spZ"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in your fridge ? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntU-Nj-jRM">
                                         <rect key="frame" x="12" y="65.666666666666671" width="404" height="30"/>
@@ -111,6 +135,7 @@
                                     <constraint firstItem="ks5-FZ-6tv" firstAttribute="leading" secondItem="KsO-OE-iBG" secondAttribute="leading" constant="12" id="Wcd-K1-KCa"/>
                                     <constraint firstAttribute="trailing" secondItem="P42-AW-a2A" secondAttribute="trailing" constant="12" id="Xid-fu-D48"/>
                                     <constraint firstItem="ntU-Nj-jRM" firstAttribute="centerY" secondItem="KsO-OE-iBG" secondAttribute="centerY" id="iuj-jm-WLa"/>
+                                    <constraint firstItem="P42-AW-a2A" firstAttribute="leading" secondItem="ks5-FZ-6tv" secondAttribute="trailing" constant="17" id="kKp-jb-HVK"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -127,6 +152,10 @@
                             <constraint firstItem="KsO-OE-iBG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sCv-c7-1Pj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addElementField" destination="ks5-FZ-6tv" id="3HU-hr-JhM"/>
+                        <outlet property="ingredientsTableView" destination="3Iw-EV-cbQ" id="5Jw-YG-ov6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

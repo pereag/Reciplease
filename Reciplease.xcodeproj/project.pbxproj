@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		D818DAAD2898318F0041DD88 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D818DAAC2898318F0041DD88 /* ResultViewController.swift */; };
+		D8B5534928A16CC200AC1193 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B5534828A16CC200AC1193 /* SearchViewModelTests.swift */; };
 		D8BB4FC828854CE7003C5D60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4FC728854CE7003C5D60 /* AppDelegate.swift */; };
 		D8BB4FCF28854CE7003C5D60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BB4FCD28854CE7003C5D60 /* Main.storyboard */; };
 		D8BB4FD228854CE7003C5D60 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4FD028854CE7003C5D60 /* Reciplease.xcdatamodeld */; };
 		D8BB4FD428854CEF003C5D60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BB4FD328854CEF003C5D60 /* Assets.xcassets */; };
 		D8BB4FD728854CEF003C5D60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BB4FD528854CEF003C5D60 /* LaunchScreen.storyboard */; };
-		D8BB4FE228854CF0003C5D60 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4FE128854CF0003C5D60 /* RecipleaseTests.swift */; };
 		D8BB4FEC28854CF0003C5D60 /* RecipleaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4FEB28854CF0003C5D60 /* RecipleaseUITests.swift */; };
 		D8BB4FEE28854CF0003C5D60 /* RecipleaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4FED28854CF0003C5D60 /* RecipleaseUITestsLaunchTests.swift */; };
 		D8F5372A2897C42600CFFBC1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F537292897C42600CFFBC1 /* AppCoordinator.swift */; };
@@ -45,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		D818DAAC2898318F0041DD88 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		D8B5534828A16CC200AC1193 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		D8BB4FC428854CE7003C5D60 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BB4FC728854CE7003C5D60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8BB4FCE28854CE7003C5D60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		D8BB4FD628854CEF003C5D60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8BB4FD828854CEF003C5D60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8BB4FDD28854CF0003C5D60 /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8BB4FE128854CF0003C5D60 /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
 		D8BB4FE728854CF0003C5D60 /* RecipleaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BB4FEB28854CF0003C5D60 /* RecipleaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITests.swift; sourceTree = "<group>"; };
 		D8BB4FED28854CF0003C5D60 /* RecipleaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -111,6 +111,14 @@
 			path = Result;
 			sourceTree = "<group>";
 		};
+		D8B5534728A16C8E00AC1193 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				D8B5534828A16CC200AC1193 /* SearchViewModelTests.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		D8BB4FBB28854CE6003C5D60 = {
 			isa = PBXGroup;
 			children = (
@@ -146,7 +154,7 @@
 		D8BB4FE028854CF0003C5D60 /* RecipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				D8BB4FE128854CF0003C5D60 /* RecipleaseTests.swift */,
+				D8B5534728A16C8E00AC1193 /* Search */,
 			);
 			path = RecipleaseTests;
 			sourceTree = "<group>";
@@ -262,6 +270,7 @@
 					};
 					D8BB4FDC28854CF0003C5D60 = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
 						TestTargetID = D8BB4FC328854CE6003C5D60;
 					};
 					D8BB4FE628854CF0003C5D60 = {
@@ -340,7 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8BB4FE228854CF0003C5D60 /* RecipleaseTests.swift in Sources */,
+				D8B5534928A16CC200AC1193 /* SearchViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,15 +574,22 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XDZ2F43RRZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.valentinperello.RecipleaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reciplease.app/Reciplease";
@@ -585,11 +601,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XDZ2F43RRZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.valentinperello.RecipleaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

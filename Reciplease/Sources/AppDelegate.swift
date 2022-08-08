@@ -18,6 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coordinator = AppCoordinator(appDelegate: self)
         coordinator.start()
         return true
-    }
+    } 
 }
  
