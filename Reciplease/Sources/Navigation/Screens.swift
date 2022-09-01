@@ -12,6 +12,12 @@ public class Screens {
     // MARK: - Properties
 
     let storyBoard = UIStoryboard(name: "Main", bundle: Bundle(for: Screens.self))
+
+    let context: Context
+
+    init(context: Context) {
+        self.context = context
+    }
 }
 
 // MARK: - Home
@@ -23,7 +29,7 @@ protocol SearchViewControllerDelegate: AnyObject {
 
 extension Screens {
     func creatSearchViewController(delegate: SearchViewControllerDelegate) -> UIViewController {
-        let repository = SearchRepository()
+        let repository = SearchRepository(client: context.client)
         let viewModel = SearchViewModel(
             repository: repository,
             delegate: delegate

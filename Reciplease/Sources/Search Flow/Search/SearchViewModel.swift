@@ -56,7 +56,7 @@ final class SearchViewModel {
         repository.getRecipe(for: ingredients, callback: { [weak self] result in
             switch result {
             case let .success(response):
-                delegate?.didPressSearch()
+                self?.delegate?.didPressSearch()
             case let .failure(error):
                 fatalError(error.localizedDescription)
             }

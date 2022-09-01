@@ -13,11 +13,13 @@ final class AppCoordinator {
 
     private unowned var appDelegate: AppDelegate
     private var homeCoordinator: HomeCoordinator?
+    private let context: Context
 
     // MARK: - Initializer
 
-    init(appDelegate: AppDelegate) {
+    init(appDelegate: AppDelegate, context: Context) {
         self.appDelegate = appDelegate
+        self.context = context
     }
 
     // MARK: - Coordinator
@@ -30,7 +32,7 @@ final class AppCoordinator {
     }
 
     private func showHome() {
-        homeCoordinator = HomeCoordinator(presenter: appDelegate.window!)
+        homeCoordinator = HomeCoordinator(presenter: appDelegate.window!, context: context)
         homeCoordinator?.start()
     }
 }

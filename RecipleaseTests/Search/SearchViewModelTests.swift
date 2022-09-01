@@ -20,12 +20,11 @@ final class SearchViewModelTests: XCTestCase {
         repository = MockRepository()
     }
     
-
     func testThatOnViewDidLoad_ThenEveryhtingIsCorrectlyLoaded() {
         let expectation1 = self.expectation(description: "Returned Title")
         let expectation2 = self.expectation(description: "Returned Search PlaceHolder")
         let expectation3 = self.expectation(description: "Returned Empty Ingredients")
-        repository.onGetRecipe = .success(.init())
+        repository.onGetRecipe = .success(.init(name: "Toto"))
         viewModel = SearchViewModel(
             repository: repository,
             delegate: delegate
@@ -52,7 +51,7 @@ final class SearchViewModelTests: XCTestCase {
     }
 
     func testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned() {
-        repository.onGetRecipe = .success(.init())
+        repository.onGetRecipe = .success(.init(name: "Toto"))
         viewModel = SearchViewModel(
             repository: repository,
             delegate: delegate
