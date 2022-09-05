@@ -34,19 +34,15 @@ final class SearchCoordinator {
         presenter.viewControllers = [viewController]
     }
 
-    private func showResult() {
-        let viewController = screens.createResultViewController()
+    private func showResult(recipes: [String]) {
+        let viewController = screens.createResultViewController(recipes: recipes)
         presenter.pushViewController(viewController, animated: true)
     }
 }
 
 extension SearchCoordinator: SearchViewControllerDelegate {
-    func searchScreenDidSelectDetail(with title: String) {
-//        showDetails(for: title)
-    }
-
-    func didPressSearch() {
-        showResult()
+    func shouldPresent(recipes: [String]) {
+        showResult(recipes: recipes)
     }
 }
 

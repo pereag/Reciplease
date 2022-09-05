@@ -39,6 +39,22 @@ final class SearchViewModelTests: XCTestCase {
             XCTAssertEqual(text, "Lemon, Cheese, Sausages...")
             expectation2.fulfill()
         }
+        
+        viewModel.subtitleText = { text in
+            XCTAssertEqual(text, "Your ingredients")
+        }
+        
+        viewModel.addButtonText = { text in
+            XCTAssertEqual(text, "Add")
+        }
+        
+        viewModel.searchButtontext = { text in
+            XCTAssertEqual(text, "Search for recipes")
+        }
+        
+        viewModel.clearButtonText = { text in
+            XCTAssertEqual(text, "Clear")
+        }
 
         viewModel.items = { items in
             XCTAssertTrue(items.isEmpty)
@@ -60,6 +76,68 @@ final class SearchViewModelTests: XCTestCase {
         viewModel.didPressSearch()
 
         XCTAssertTrue(delegate._didPressSearch)
+    }
+    
+    func testThatOnDidPressAdd_WithSuccess_IngredientsAppendItem() {
+        let expectation = self.expectation(description: "Item is added")
+        viewModel = SearchViewModel(
+            repository: repository,
+            delegate: delegate
+        )
+        
+        viewModel.items = { items in
+            XCTAssertEqual(items[0], "banana")
+            expectation.fulfill()
+        }
+
+        viewModel.didPressAdd(item: "Banana")
+        
+        waitForExpectations(timeout: 1.0)
+    }
+    
+    func testThatOnDidPressAdd_WithFaillure_IngredientsAppendItem() {
+        let expectation = self.expectation(description: "Item can't be added twice")
+        expectation.expectedFulfillmentCount = 1
+        viewModel = SearchViewModel(
+            repository: repository,
+            delegate: delegate
+        )
+        
+        viewModel.items = { items in
+            XCTAssertEqual(items.count, 1)
+            expectation.fulfill()
+        }
+
+        viewModel.didPressAdd(item: "Banana")
+        viewModel.didPressAdd(item: "banana")
+        viewModel.didPressAdd(item: "BaNana")
+        viewModel.didPressAdd(item: "bananA")
+        viewModel.didPressAdd(item: "Banana")
+        
+        waitForExpectations(timeout: 1.0)
+    }
+    
+    func testThatOnDidPressClear_WithSuccess_AllIngredientsItemsIsRemove() {
+        let expectation = self.expectation(description: "Items can be empty")
+        expectation.expectedFulfillmentCount = 2
+        viewModel = SearchViewModel(
+            repository: repository,
+            delegate: delegate
+        )
+
+        var counter = 0
+        viewModel.items = { items in
+            if counter == 1 {
+                XCTAssertTrue(items.isEmpty)
+            }
+            counter+=1
+            expectation.fulfill()
+        }
+
+        viewModel.didPressAdd(item: "Banana")
+        viewModel.didPressClear()
+        
+        waitForExpectations(timeout: 1.0)
     }
 }
 

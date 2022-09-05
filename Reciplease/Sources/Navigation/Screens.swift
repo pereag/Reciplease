@@ -23,8 +23,7 @@ public class Screens {
 // MARK: - Home
 
 protocol SearchViewControllerDelegate: AnyObject {
-    func searchScreenDidSelectDetail(with title: String)
-    func didPressSearch()
+    func shouldPresent(recipes: [String])
 }
 
 extension Screens {
@@ -41,8 +40,8 @@ extension Screens {
         return viewController
     }
 
-    func createResultViewController() -> UIViewController {
-        let viewController = storyBoard.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
+    func createResultViewController(recipes: [String]) -> UIViewController {
+        let viewController = storyBoard.instantiateViewController(withIdentifier: "RecipeViewController") as! RecipeViewController
         return viewController
     }
 }

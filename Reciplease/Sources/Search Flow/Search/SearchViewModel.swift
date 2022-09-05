@@ -13,7 +13,7 @@ final class SearchViewModel {
 
     private let repository: SearchRepositoryType
     private weak var delegate: SearchViewControllerDelegate?
-    public var ingredients: [String] = [] {
+    private var ingredients: [String] = [] {
         didSet {
             items?(ingredients)
         }
@@ -56,16 +56,18 @@ final class SearchViewModel {
         repository.getRecipe(for: ingredients, callback: { [weak self] result in
             switch result {
             case let .success(response):
-                self?.delegate?.didPressSearch()
+                // TODO: - Map response to recipes
+                print(response)
+                self?.delegate?.shouldPresent(recipes: [])
             case let .failure(error):
-                fatalError(error.localizedDescription)
+                print(error.localizedDescription)
             }
         })
     }
     
     func didPressAdd(item: String) {
-        guard !ingredients.contains(item) else { return }
-        ingredients.append(item)
+        guard !ingredients.contains(item.lowercased()) else { return }
+        ingredients.append(item.lowercased())
     }
     
     func didPressClear() {
