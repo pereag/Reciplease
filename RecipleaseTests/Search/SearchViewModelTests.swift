@@ -14,6 +14,15 @@ final class SearchViewModelTests: XCTestCase {
     private var delegate: MockDelegate!
     private var viewModel: SearchViewModel!
 
+    enum Constant {
+        static let mockRecipeResponse = RecipeResponse(
+            from: 1,
+            to: 1,
+            count: 1,
+            hits: []
+        )
+    }
+
     override func setUp() {
         super.setUp()
         delegate = MockDelegate()
@@ -24,7 +33,7 @@ final class SearchViewModelTests: XCTestCase {
         let expectation1 = self.expectation(description: "Returned Title")
         let expectation2 = self.expectation(description: "Returned Search PlaceHolder")
         let expectation3 = self.expectation(description: "Returned Empty Ingredients")
-        repository.onGetRecipe = .success(.init(name: "Toto"))
+        repository.onGetRecipe = .success(Constant.mockRecipeResponse)
         viewModel = SearchViewModel(
             repository: repository,
             delegate: delegate
@@ -67,15 +76,11 @@ final class SearchViewModelTests: XCTestCase {
     }
 
     func testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned() {
-        repository.onGetRecipe = .success(.init(name: "Toto"))
-        viewModel = SearchViewModel(
-            repository: repository,
-            delegate: delegate
-        )
-
+        viewModel = SearchViewModel(repository: repository, delegate: delegate)
+        repository.onGetRecipe = .success(Constant.mockRecipeResponse)
+        viewModel.didPressAdd(item: "Banana")
         viewModel.didPressSearch()
-
-        XCTAssertTrue(delegate._didPressSearch)
+        XCTAssertEqual(delegate.recipes, ["Toto"])
     }
     
     func testThatOnDidPressAdd_WithSuccess_IngredientsAppendItem() {
@@ -150,13 +155,9 @@ private final class MockRepository: SearchRepositoryType {
 }
 
 private final class MockDelegate: SearchViewControllerDelegate {
-    var _didPressSearch = false
-    
-    func searchScreenDidSelectDetail(with title: String) {
-        
-    }
-    
-    func didPressSearch() {
-        _didPressSearch = true
+    var recipes: [String] = []
+
+    func shouldPresent(recipes: [String]) {
+        self.recipes = recipes
     }
 }

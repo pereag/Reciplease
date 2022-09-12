@@ -10,15 +10,29 @@ import UIKit
 final class SearchViewController: UIViewController {
     
     var viewModel: SearchViewModel!
+
+    private var items: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        bindViewModel()
+    }
+
+    private func bindViewModel() {
+        viewModel.items = { [weak self] items in
+            DispatchQueue.main.async {
+                self?.items = items
+                self?.tableView.reloadData()
+            }
+        }
     }
     
     // MARK: Input
 
+    
+    @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var addElementField: UITextField!
-    @IBOutlet private weak var ingredientsTableView: UITableView!
     
     // MARK: output
 
@@ -35,5 +49,17 @@ final class SearchViewController: UIViewController {
     
     @IBAction private func didPressClear(_ sender: UIButton) {
         viewModel.didPressClear()
+    }
+}
+
+extension SearchViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = items[indexPath.item]
+        return cell
     }
 }

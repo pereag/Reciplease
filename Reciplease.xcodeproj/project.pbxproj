@@ -28,7 +28,6 @@
 		D8F537312897F19100CFFBC1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F537302897F19100CFFBC1 /* SearchViewController.swift */; };
 		D8F537332897F1A100CFFBC1 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F537322897F1A100CFFBC1 /* SearchViewModel.swift */; };
 		D8F537352897F1BA00CFFBC1 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F537342897F1BA00CFFBC1 /* SearchRepository.swift */; };
-		D8F537372897F1E900CFFBC1 /* SearchViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F537362897F1E900CFFBC1 /* SearchViewControllerDataSource.swift */; };
 		D8F537392897F37800CFFBC1 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F537382897F37800CFFBC1 /* SearchCoordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +66,6 @@
 		D8F537302897F19100CFFBC1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D8F537322897F1A100CFFBC1 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		D8F537342897F1BA00CFFBC1 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
-		D8F537362897F1E900CFFBC1 /* SearchViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerDataSource.swift; sourceTree = "<group>"; };
 		D8F537382897F37800CFFBC1 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,7 +94,6 @@
 				D8F537302897F19100CFFBC1 /* SearchViewController.swift */,
 				D8F537322897F1A100CFFBC1 /* SearchViewModel.swift */,
 				D8F537342897F1BA00CFFBC1 /* SearchRepository.swift */,
-				D8F537362897F1E900CFFBC1 /* SearchViewControllerDataSource.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -319,7 +316,6 @@
 				D8F537332897F1A100CFFBC1 /* SearchViewModel.swift in Sources */,
 				D8F5372A2897C42600CFFBC1 /* AppCoordinator.swift in Sources */,
 				D8BB4FD228854CE7003C5D60 /* Reciplease.xcdatamodeld in Sources */,
-				D8F537372897F1E900CFFBC1 /* SearchViewControllerDataSource.swift in Sources */,
 				D8B2E23528C6296C002BBD97 /* RecipeEndpoint.swift in Sources */,
 				D8F5372E2897E76B00CFFBC1 /* HomeCoordinator.swift in Sources */,
 				D8F537392897F37800CFFBC1 /* SearchCoordinator.swift in Sources */,

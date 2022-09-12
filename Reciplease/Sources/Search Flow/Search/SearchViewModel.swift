@@ -58,7 +58,7 @@ final class SearchViewModel {
             case let .success(response):
                 // TODO: - Map response to recipes
                 print(response)
-                self?.delegate?.shouldPresent(recipes: [])
+                self?.delegate?.shouldPresent(recipes: ["Toto"])
             case let .failure(error):
                 print(error.localizedDescription)
             }

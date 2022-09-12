@@ -51,7 +51,7 @@
                                             <action selector="didPressSearch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SiH-U7-V82"/>
                                         </connections>
                                     </button>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="-1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3Iw-EV-cbQ" customClass="ingredientsTableView">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="-1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3Iw-EV-cbQ">
                                         <rect key="frame" x="12" y="66" width="404" height="556"/>
                                         <color key="sectionIndexBackgroundColor" red="0.26830808080000002" green="0.2193036404" blue="0.15814187930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
@@ -154,17 +154,17 @@
                     </view>
                     <connections>
                         <outlet property="addElementField" destination="ks5-FZ-6tv" id="3HU-hr-JhM"/>
-                        <outlet property="ingredientsTableView" destination="3Iw-EV-cbQ" id="5Jw-YG-ov6"/>
+                        <outlet property="tableView" destination="3Iw-EV-cbQ" id="RDX-bT-1CP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="29.439252336448597" y="69.330453563714912"/>
         </scene>
-        <!--Result View Controller-->
+        <!--Recipe View Controller-->
         <scene sceneID="N4Y-V5-Yib">
             <objects>
-                <viewController storyboardIdentifier="ResultViewController" id="bqr-Ik-RU4" customClass="ResultViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecipeViewController" id="bqr-Ik-RU4" customClass="RecipeViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mZk-lP-FmU">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
