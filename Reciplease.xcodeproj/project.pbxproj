@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D804225428D87337006BD835 /* UIViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D804225328D87337006BD835 /* UIViewManager.swift */; };
 		D818DAAD2898318F0041DD88 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D818DAAC2898318F0041DD88 /* RecipeViewController.swift */; };
+		D85EB4B028D8679100EFD4A6 /* AlerteContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EB4AF28D8679100EFD4A6 /* AlerteContent.swift */; };
 		D8B2E22628C10C38002BBD97 /* RequestCancellationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B2E22528C10C38002BBD97 /* RequestCancellationToken.swift */; };
 		D8B2E22828C10C9C002BBD97 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B2E22728C10C9C002BBD97 /* HTTPClient.swift */; };
 		D8B2E22A28C10E24002BBD97 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B2E22928C10E24002BBD97 /* JSONParser.swift */; };
@@ -42,7 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D804225328D87337006BD835 /* UIViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewManager.swift; sourceTree = "<group>"; };
 		D818DAAC2898318F0041DD88 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		D85EB4AF28D8679100EFD4A6 /* AlerteContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlerteContent.swift; sourceTree = "<group>"; };
 		D8B2E22528C10C38002BBD97 /* RequestCancellationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCancellationToken.swift; sourceTree = "<group>"; };
 		D8B2E22728C10C9C002BBD97 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		D8B2E22928C10E24002BBD97 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				D8BB4FCD28854CE7003C5D60 /* Main.storyboard */,
 				D8BB4FC728854CE7003C5D60 /* AppDelegate.swift */,
 				D8B2E22E28C10FE6002BBD97 /* Context.swift */,
+				D85EB4AF28D8679100EFD4A6 /* AlerteContent.swift */,
+				D804225328D87337006BD835 /* UIViewManager.swift */,
 				D8F537292897C42600CFFBC1 /* AppCoordinator.swift */,
 				D8F537282897C2C500CFFBC1 /* Navigation */,
 				D8F5372F2897F14500CFFBC1 /* Search Flow */,
@@ -322,10 +328,12 @@
 				D8BB4FC828854CE7003C5D60 /* AppDelegate.swift in Sources */,
 				D8F5372C2897C96200CFFBC1 /* Screens.swift in Sources */,
 				D8B2E23728C64F2B002BBD97 /* RecipeResponse.swift in Sources */,
+				D804225428D87337006BD835 /* UIViewManager.swift in Sources */,
 				D8F537352897F1BA00CFFBC1 /* SearchRepository.swift in Sources */,
 				D8B2E22F28C10FE6002BBD97 /* Context.swift in Sources */,
 				D818DAAD2898318F0041DD88 /* RecipeViewController.swift in Sources */,
 				D8B2E23128C22A88002BBD97 /* Endpoint.swift in Sources */,
+				D85EB4B028D8679100EFD4A6 /* AlerteContent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

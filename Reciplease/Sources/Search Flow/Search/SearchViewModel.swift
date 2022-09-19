@@ -38,6 +38,7 @@ final class SearchViewModel {
     var addButtonText: ((String) -> Void)?
     var clearButtonText: ((String) -> Void)?
     var searchButtontext: ((String) -> Void)?
+    var displayedAlert: ((AlertContent) -> Void)?
     var items: (([String]) -> Void)?
 
     // MARK: - Inputs
@@ -53,25 +54,75 @@ final class SearchViewModel {
     }
 
     func didPressSearch() {
+        if ingredients.count == 0 {
+            let alertContent = AlertContent(
+               title: "Alert",
+               message: "Please add Foods.",
+               cancelTitle: "Ok"
+            )
+            self.displayedAlert?(alertContent)
+            return
+        }
         repository.getRecipe(for: ingredients, callback: { [weak self] result in
             switch result {
             case let .success(response):
                 // TODO: - Map response to recipes
                 print(response)
-                self?.delegate?.shouldPresent(recipes: ["Toto"])
+                if response.count == 0 {
+                    let alertContent = AlertContent(
+                       title: "Alert",
+                       message: "No recipes found.",
+                       cancelTitle: "Ok"
+                    )
+                    self?.displayedAlert?(alertContent)
+                } else {
+                    self?.delegate?.shouldPresent(recipes: ["Toto"])
+                }
             case let .failure(error):
+                let alertContent = AlertContent(
+                   title: "Alert",
+                   message: "An unexpected error has occurred. ",
+                   cancelTitle: "Ok"
+                )
+                self?.displayedAlert?(alertContent)
                 print(error.localizedDescription)
             }
         })
     }
     
     func didPressAdd(item: String) {
-        guard !ingredients.contains(item.lowercased()) else { return }
-        ingredients.append(item.lowercased())
+        if item.isEmpty {
+            let alertContent = AlertContent(
+               title: "Alert",
+               message: "Please fill in the field.",
+               cancelTitle: "Ok"
+            )
+            self.displayedAlert?(alertContent)
+        } else {
+            if !ingredients.contains(item.lowercased()) {
+                ingredients.append(item.lowercased())
+            } else {
+                let alertContent = AlertContent(
+                   title: "Alert",
+                   message: "Food already present in the list.",
+                   cancelTitle: "Ok"
+                )
+                self.displayedAlert?(alertContent)
+            }
+        }
     }
     
     func didPressClear() {
-        ingredients.removeAll()
+        if ingredients.count <= 0 {
+            let alertContent = AlertContent(
+               title: "Alert",
+               message: "No foods in the list to delete.",
+               cancelTitle: "Ok"
+            )
+            self.displayedAlert?(alertContent)
+        } else {
+            ingredients.removeAll()
+        }
     }
 }
 

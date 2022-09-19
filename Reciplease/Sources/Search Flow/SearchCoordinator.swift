@@ -35,8 +35,8 @@ final class SearchCoordinator {
     }
 
     private func showResult(recipes: [String]) {
-        let viewController = screens.createResultViewController(recipes: recipes)
         DispatchQueue.main.async {
+            let viewController = self.screens.createResultViewController(recipes: recipes)
             self.presenter.pushViewController(viewController, animated: true)
         }
     }

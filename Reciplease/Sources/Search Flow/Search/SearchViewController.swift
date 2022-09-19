@@ -26,6 +26,13 @@ final class SearchViewController: UIViewController {
                 self?.tableView.reloadData()
             }
         }
+        
+        viewModel.displayedAlert = { [weak self] alertContent in
+            DispatchQueue.main.async {
+                self?.presentAlert(content: alertContent)
+            }
+            
+        }
     }
     
     // MARK: Input
@@ -35,16 +42,16 @@ final class SearchViewController: UIViewController {
     @IBOutlet private weak var addElementField: UITextField!
     
     // MARK: output
+    
+    var displayedAlert: ((AlertContent) -> Void)?
+    
 
     @IBAction private func didPressSearch(_ sender: Any) {
         viewModel.didPressSearch()
     }
     
     @IBAction private func didPressAdd(_ sender: Any) {
-        if addElementField.text != "" {
-            viewModel.didPressAdd(item: addElementField.text!)
-            addElementField.text = ""
-        }
+        viewModel.didPressAdd(item: addElementField.text!)
     }
     
     @IBAction private func didPressClear(_ sender: UIButton) {
