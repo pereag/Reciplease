@@ -81,7 +81,7 @@ final class SearchViewModel {
             case let .failure(error):
                 let alertContent = AlertContent(
                    title: "Alert",
-                   message: "An unexpected error has occurred. ",
+                   message: "An unexpected error has occurred.",
                    cancelTitle: "Ok"
                 )
                 self?.displayedAlert?(alertContent)

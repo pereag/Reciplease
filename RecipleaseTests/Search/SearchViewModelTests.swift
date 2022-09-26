@@ -14,29 +14,29 @@ final class SearchViewModelTests: XCTestCase {
     private var delegate: MockDelegate!
     private var viewModel: SearchViewModel!
     
-    enum Constant {
+   /* enum Constant {
         static let mockRecipeResponse = RecipeResponse(
             from: 1,
             to: 1,
             count: 1,
             hits: []
         )
-    }
+    } */
     
-    override func setUp() {
+    /* override func setUp() {
         super.setUp()
         delegate = MockDelegate()
         repository = MockRepository()
-    }
-    
+    } */
     func testThatOnViewDidLoad_ThenEveryhtingIsCorrectlyLoaded() {
         let expectation1 = self.expectation(description: "Returned Title")
         let expectation2 = self.expectation(description: "Returned Search PlaceHolder")
         let expectation3 = self.expectation(description: "Returned Empty Ingredients")
-        repository.onGetRecipe = .success(Constant.mockRecipeResponse)
+        let mockResponse = MockRepository(responses: .success)
+        let mockDelegate = MockDelegate()
         viewModel = SearchViewModel(
-            repository: repository,
-            delegate: delegate
+            repository: mockResponse,
+            delegate: mockDelegate
         )
         
         viewModel.titleText = { text in
@@ -76,19 +76,19 @@ final class SearchViewModelTests: XCTestCase {
     }
     
     func testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned() {
-        viewModel = SearchViewModel(repository: repository, delegate: delegate)
-        repository.onGetRecipe = .success(Constant.mockRecipeResponse)
+        let mockResponse = MockRepository(responses: .success)
+        let mockDelegate = MockDelegate()
+        viewModel = SearchViewModel(repository: mockResponse, delegate: mockDelegate)
         viewModel.didPressAdd(item: "Banana")
         viewModel.didPressSearch()
-        XCTAssertEqual(delegate.recipes, ["Toto"])
+        XCTAssertEqual(mockDelegate.recipes, ["Toto"])
     }
     
     func testThatOnDidPressAdd_WithSuccess_IngredientsAppendItem() {
         let expectation = self.expectation(description: "Item is added")
-        viewModel = SearchViewModel(
-            repository: repository,
-            delegate: delegate
-        )
+        let mockResponse = MockRepository(responses: .success)
+        let mockDelegate = MockDelegate()
+        viewModel = SearchViewModel(repository: mockResponse, delegate: mockDelegate)
         
         viewModel.items = { items in
             XCTAssertEqual(items[0], "banana")
@@ -103,10 +103,9 @@ final class SearchViewModelTests: XCTestCase {
     func testThatOnDidPressAdd_WithFailure_IngredientsAppendItem() {
         let expectation = self.expectation(description: "Item can't be added twice")
         expectation.expectedFulfillmentCount = 1
-        viewModel = SearchViewModel(
-            repository: repository,
-            delegate: delegate
-        )
+        let mockResponse = MockRepository(responses: .success)
+        let mockDelegate = MockDelegate()
+        viewModel = SearchViewModel(repository: mockResponse, delegate: mockDelegate)
         
         viewModel.items = { items in
             XCTAssertEqual(items.count, 1)
@@ -125,10 +124,9 @@ final class SearchViewModelTests: XCTestCase {
     func testThatOnDidPressClear_WithSuccess_AllIngredientsItemsIsRemove() {
         let expectation = self.expectation(description: "Items can be empty")
         expectation.expectedFulfillmentCount = 2
-        viewModel = SearchViewModel(
-            repository: repository,
-            delegate: delegate
-        )
+        let mockResponse = MockRepository(responses: .success)
+        let mockDelegate = MockDelegate()
+        viewModel = SearchViewModel(repository: mockResponse, delegate: mockDelegate)
         
         var counter = 0
         viewModel.items = { items in
@@ -147,10 +145,10 @@ final class SearchViewModelTests: XCTestCase {
     
     func testThatOndidPressAdd_WhithIngrendientsArrayIsEmpty_DisplayAnAlert() {
         let expectation = self.expectation(description: "Display alert")
-        let viewModel = SearchViewModel(
-            repository: repository,
-            delegate: delegate
-        )
+        let mockResponse = MockRepository(responses: .success)
+        let mockDelegate = MockDelegate()
+        viewModel = SearchViewModel(repository: mockResponse, delegate: mockDelegate)
+        
         var counter = 0
         
         viewModel.displayedAlert = { alert in
@@ -171,10 +169,10 @@ final class SearchViewModelTests: XCTestCase {
     
     func testThatOndidPressClear_WhithIngrendientsArrayIsEmpty_DisplayAnAlert() {
         let expectation = self.expectation(description: "Display alert")
-        let viewModel = SearchViewModel(
-            repository: repository,
-            delegate: delegate
-        )
+        let mockResponse = MockRepository(responses: .success)
+        let mockDelegate = MockDelegate()
+        viewModel = SearchViewModel(repository: mockResponse, delegate: mockDelegate)
+        
         var counter = 0
         
         viewModel.displayedAlert = { alert in
@@ -195,10 +193,10 @@ final class SearchViewModelTests: XCTestCase {
     
     func testThatOndidPressAdd_WhithIngredientFieldIsEmpty_DisplayAnAlert() {
         let expectation = self.expectation(description: "Display alert")
-        let viewModel = SearchViewModel(
-            repository: repository,
-            delegate: delegate
-        )
+        let mockResponse = MockRepository(responses: .success)
+        let mockDelegate = MockDelegate()
+        viewModel = SearchViewModel(repository: mockResponse, delegate: mockDelegate)
+        
         var counter = 0
         
         viewModel.displayedAlert = { alert in
@@ -218,11 +216,10 @@ final class SearchViewModelTests: XCTestCase {
     
     func testThatOnDidPressSearch_withIsFailure_DisplayAnAlert() {
         let expectation = self.expectation(description: "Display alert")
+        let mockResponse = MockRepository(responses: .failure)
+        let mockDelegate = MockDelegate()
+        viewModel = SearchViewModel(repository: mockResponse, delegate: mockDelegate)
         
-        let viewModel = SearchViewModel(
-            repository: repository,
-            delegate: delegate
-        )
         var counter = 0
         
         viewModel.displayedAlert = { alert in
@@ -239,15 +236,20 @@ final class SearchViewModelTests: XCTestCase {
         
         waitForExpectations(timeout: 1.0, handler: nil)
     }
-    
 }
 
 private final class MockRepository: SearchRepositoryType {
+    let responses: Responses
     
-    var onGetRecipe: Result<RecipeResponse, Error>!
+    init(responses: Responses) {
+        self.responses = responses
+    }
+    struct Responses {
+        var onGetRecipe: Result<RecipeResponse, Error>!
+    }
     
     func getRecipe(for ingredients: [String], callback: (Result<RecipeResponse, Error>) -> Void) {
-        callback(onGetRecipe)
+        callback(responses.onGetRecipe)
     }
 }
 
@@ -258,5 +260,32 @@ private final class MockDelegate: SearchViewControllerDelegate {
         self.recipes = recipes
     }
 }
+
+private extension MockRepository.Responses {
+    static var success: MockRepository.Responses {
+        return .init(
+            onGetRecipe: .success(
+                RecipeResponse(
+                    from: 1,
+                    to: 1,
+                    count: 1,
+                    hits: []
+                )
+            )
+        )
+    }
+    
+    static var failure: MockRepository.Responses {
+        return .init(
+            onGetRecipe: .failure(MockError.mock)
+        )
+    }
+    
+    enum MockError: Error {
+        case mock
+    }
+}
+
+
 
 
