@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D804225428D87337006BD835 /* UIViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D804225328D87337006BD835 /* UIViewManager.swift */; };
 		D818DAAD2898318F0041DD88 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D818DAAC2898318F0041DD88 /* RecipeViewController.swift */; };
+		D83FD9E728E1F5510041D5EA /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83FD9E628E1F5510041D5EA /* RecipeViewModel.swift */; };
 		D85EB4B028D8679100EFD4A6 /* AlerteContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EB4AF28D8679100EFD4A6 /* AlerteContent.swift */; };
 		D8B2E22628C10C38002BBD97 /* RequestCancellationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B2E22528C10C38002BBD97 /* RequestCancellationToken.swift */; };
 		D8B2E22828C10C9C002BBD97 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B2E22728C10C9C002BBD97 /* HTTPClient.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		D804225328D87337006BD835 /* UIViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewManager.swift; sourceTree = "<group>"; };
 		D818DAAC2898318F0041DD88 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		D83FD9E628E1F5510041D5EA /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		D85EB4AF28D8679100EFD4A6 /* AlerteContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlerteContent.swift; sourceTree = "<group>"; };
 		D8B2E22528C10C38002BBD97 /* RequestCancellationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCancellationToken.swift; sourceTree = "<group>"; };
 		D8B2E22728C10C9C002BBD97 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				D818DAAC2898318F0041DD88 /* RecipeViewController.swift */,
+				D83FD9E628E1F5510041D5EA /* RecipeViewModel.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				D8BB4FD228854CE7003C5D60 /* Reciplease.xcdatamodeld in Sources */,
 				D8B2E23528C6296C002BBD97 /* RecipeEndpoint.swift in Sources */,
 				D8F5372E2897E76B00CFFBC1 /* HomeCoordinator.swift in Sources */,
+				D83FD9E728E1F5510041D5EA /* RecipeViewModel.swift in Sources */,
 				D8F537392897F37800CFFBC1 /* SearchCoordinator.swift in Sources */,
 				D8BB4FC828854CE7003C5D60 /* AppDelegate.swift in Sources */,
 				D8F5372C2897C96200CFFBC1 /* Screens.swift in Sources */,

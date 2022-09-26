@@ -68,7 +68,7 @@ final class SearchViewModel {
             case let .success(response):
                 // TODO: - Map response to recipes
                 print(response)
-                if response.count == 0 {
+               if response.count == 0 {
                     let alertContent = AlertContent(
                        title: "Alert",
                        message: "No recipes found.",

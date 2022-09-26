@@ -7,4 +7,7 @@
 
 import UIKit
 
-final class RecipeViewController: UIViewController {}
+final class RecipeViewController: UIViewController {
+
+    private var items: [String] = []
+}

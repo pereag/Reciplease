@@ -9,11 +9,11 @@ import XCTest
 @testable import Reciplease
 
 final class SearchViewModelTests: XCTestCase {
-
+    
     private var repository: MockRepository!
     private var delegate: MockDelegate!
     private var viewModel: SearchViewModel!
-
+    
     enum Constant {
         static let mockRecipeResponse = RecipeResponse(
             from: 1,
@@ -22,7 +22,7 @@ final class SearchViewModelTests: XCTestCase {
             hits: []
         )
     }
-
+    
     override func setUp() {
         super.setUp()
         delegate = MockDelegate()
@@ -38,12 +38,12 @@ final class SearchViewModelTests: XCTestCase {
             repository: repository,
             delegate: delegate
         )
-
+        
         viewModel.titleText = { text in
             XCTAssertEqual(text, "What's in your fridge?")
             expectation1.fulfill()
         }
-
+        
         viewModel.searchPlaceholderText = { text in
             XCTAssertEqual(text, "Lemon, Cheese, Sausages...")
             expectation2.fulfill()
@@ -64,17 +64,17 @@ final class SearchViewModelTests: XCTestCase {
         viewModel.clearButtonText = { text in
             XCTAssertEqual(text, "Clear")
         }
-
+        
         viewModel.items = { items in
             XCTAssertTrue(items.isEmpty)
             expectation3.fulfill()
         }
-
+        
         viewModel.viewDidLoad()
-    
+        
         waitForExpectations(timeout: 1.0)
     }
-
+    
     func testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned() {
         viewModel = SearchViewModel(repository: repository, delegate: delegate)
         repository.onGetRecipe = .success(Constant.mockRecipeResponse)
@@ -94,13 +94,13 @@ final class SearchViewModelTests: XCTestCase {
             XCTAssertEqual(items[0], "banana")
             expectation.fulfill()
         }
-
+        
         viewModel.didPressAdd(item: "Banana")
         
         waitForExpectations(timeout: 1.0)
     }
     
-    func testThatOnDidPressAdd_WithFaillure_IngredientsAppendItem() {
+    func testThatOnDidPressAdd_WithFailure_IngredientsAppendItem() {
         let expectation = self.expectation(description: "Item can't be added twice")
         expectation.expectedFulfillmentCount = 1
         viewModel = SearchViewModel(
@@ -112,7 +112,7 @@ final class SearchViewModelTests: XCTestCase {
             XCTAssertEqual(items.count, 1)
             expectation.fulfill()
         }
-
+        
         viewModel.didPressAdd(item: "Banana")
         viewModel.didPressAdd(item: "banana")
         viewModel.didPressAdd(item: "BaNana")
@@ -129,7 +129,7 @@ final class SearchViewModelTests: XCTestCase {
             repository: repository,
             delegate: delegate
         )
-
+        
         var counter = 0
         viewModel.items = { items in
             if counter == 1 {
@@ -138,17 +138,114 @@ final class SearchViewModelTests: XCTestCase {
             counter+=1
             expectation.fulfill()
         }
-
+        
         viewModel.didPressAdd(item: "Banana")
         viewModel.didPressClear()
         
         waitForExpectations(timeout: 1.0)
     }
+    
+    func testThatOndidPressAdd_WhithIngrendientsArrayIsEmpty_DisplayAnAlert() {
+        let expectation = self.expectation(description: "Display alert")
+        let viewModel = SearchViewModel(
+            repository: repository,
+            delegate: delegate
+        )
+        var counter = 0
+        
+        viewModel.displayedAlert = { alert in
+            if counter == 0 {
+                XCTAssertEqual(alert.title, "Alert")
+                XCTAssertEqual(alert.message, "Please add Foods.")
+                XCTAssertEqual(alert.cancelTitle, "Ok")
+                expectation.fulfill()
+            }
+            counter+=1
+        }
+        viewModel.viewDidLoad()
+        viewModel.didPressSearch()
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
+        
+    }
+    
+    func testThatOndidPressClear_WhithIngrendientsArrayIsEmpty_DisplayAnAlert() {
+        let expectation = self.expectation(description: "Display alert")
+        let viewModel = SearchViewModel(
+            repository: repository,
+            delegate: delegate
+        )
+        var counter = 0
+        
+        viewModel.displayedAlert = { alert in
+            if counter == 0 {
+                XCTAssertEqual(alert.title, "Alert")
+                XCTAssertEqual(alert.message, "No foods in the list to delete.")
+                XCTAssertEqual(alert.cancelTitle, "Ok")
+                expectation.fulfill()
+            }
+            counter+=1
+        }
+        viewModel.viewDidLoad()
+        viewModel.didPressClear()
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
+        
+    }
+    
+    func testThatOndidPressAdd_WhithIngredientFieldIsEmpty_DisplayAnAlert() {
+        let expectation = self.expectation(description: "Display alert")
+        let viewModel = SearchViewModel(
+            repository: repository,
+            delegate: delegate
+        )
+        var counter = 0
+        
+        viewModel.displayedAlert = { alert in
+            if counter == 0 {
+                XCTAssertEqual(alert.title, "Alert")
+                XCTAssertEqual(alert.message, "Please fill in the field.")
+                XCTAssertEqual(alert.cancelTitle, "Ok")
+                expectation.fulfill()
+            }
+            counter+=1
+        }
+        viewModel.viewDidLoad()
+        viewModel.didPressAdd(item: "")
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+    
+    func testThatOnDidPressSearch_withIsFailure_DisplayAnAlert() {
+        let expectation = self.expectation(description: "Display alert")
+        
+        let viewModel = SearchViewModel(
+            repository: repository,
+            delegate: delegate
+        )
+        var counter = 0
+        
+        viewModel.displayedAlert = { alert in
+            if counter == 0 {
+                XCTAssertEqual(alert.title, "Alert")
+                XCTAssertEqual(alert.message, "Please fill in the field.")
+                XCTAssertEqual(alert.cancelTitle, "Ok")
+                expectation.fulfill()
+            }
+            counter+=1
+        }
+        viewModel.viewDidLoad()
+        viewModel.didPressAdd(item: "")
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+    
 }
 
 private final class MockRepository: SearchRepositoryType {
+    
     var onGetRecipe: Result<RecipeResponse, Error>!
-
+    
     func getRecipe(for ingredients: [String], callback: (Result<RecipeResponse, Error>) -> Void) {
         callback(onGetRecipe)
     }
@@ -156,8 +253,10 @@ private final class MockRepository: SearchRepositoryType {
 
 private final class MockDelegate: SearchViewControllerDelegate {
     var recipes: [String] = []
-
+    
     func shouldPresent(recipes: [String]) {
         self.recipes = recipes
     }
 }
+
+
