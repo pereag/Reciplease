@@ -23,7 +23,7 @@ public class Screens {
 // MARK: - Home
 
 protocol SearchViewControllerDelegate: AnyObject {
-    func shouldPresent(recipes: [String])
+    func shouldPresent(recipes: RecipeResponse)
 }
 
 extension Screens {
@@ -40,8 +40,10 @@ extension Screens {
         return viewController
     }
 
-    func createResultViewController(recipes: [String]) -> UIViewController {
+    func createResultViewController(recipes: RecipeResponse) -> UIViewController {
         let viewController = storyBoard.instantiateViewController(withIdentifier: "RecipeViewController") as! RecipeViewController
+        let viewModel = RecipeViewModel(recipesCount: recipes.hits.count, recipesList: recipes.hits)
+        viewController.viewModel = viewModel
         return viewController
     }
 }

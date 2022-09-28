@@ -37,7 +37,6 @@ final class SearchViewController: UIViewController {
     
     // MARK: Input
 
-    
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var addElementField: UITextField!
     

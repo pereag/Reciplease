@@ -67,17 +67,8 @@ final class SearchViewModel {
             switch result {
             case let .success(response):
                 // TODO: - Map response to recipes
-                print(response)
-               if response.count == 0 {
-                    let alertContent = AlertContent(
-                       title: "Alert",
-                       message: "No recipes found.",
-                       cancelTitle: "Ok"
-                    )
-                    self?.displayedAlert?(alertContent)
-                } else {
-                    self?.delegate?.shouldPresent(recipes: ["Toto"])
-                }
+                //print(response)
+                self?.delegate?.shouldPresent(recipes: response)
             case let .failure(error):
                 let alertContent = AlertContent(
                    title: "Alert",

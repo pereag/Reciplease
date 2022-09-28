@@ -236,6 +236,30 @@ final class SearchViewModelTests: XCTestCase {
         
         waitForExpectations(timeout: 1.0, handler: nil)
     }
+    
+    func testThatOnDidPressSearch_withFailure_DisplayAnAlert() {
+        let expectation = self.expectation(description: "Display alert")
+        let mockResponse = MockRepository(responses: .failure)
+        let mockDelegate = MockDelegate()
+        viewModel = SearchViewModel(repository: mockResponse, delegate: mockDelegate)
+        
+        var counter = 0
+        
+        viewModel.displayedAlert = { alert in
+            if counter == 0 {
+                XCTAssertEqual(alert.title, "Alert")
+                XCTAssertEqual(alert.message, "An unexpected error has occurred.")
+                XCTAssertEqual(alert.cancelTitle, "Ok")
+                expectation.fulfill()
+            }
+            counter+=1
+        }
+        viewModel.viewDidLoad()
+        viewModel.didPressAdd(item: "fgfgdggfgdfgggrgrg")
+        viewModel.didPressSearch()
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
 }
 
 private final class MockRepository: SearchRepositoryType {
