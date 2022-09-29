@@ -42,7 +42,7 @@ extension Screens {
 
     func createResultViewController(recipes: RecipeResponse) -> UIViewController {
         let viewController = storyBoard.instantiateViewController(withIdentifier: "RecipeViewController") as! RecipeViewController
-        let viewModel = RecipeViewModel(recipesCount: recipes.hits.count, recipesList: recipes.hits)
+        let viewModel = RecipeViewModel(recipesList: recipes.hits)
         viewController.viewModel = viewModel
         return viewController
     }

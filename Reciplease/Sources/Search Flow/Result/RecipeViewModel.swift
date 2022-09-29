@@ -10,27 +10,23 @@ import Foundation
 final class RecipeViewModel {
     // MARK: Private properties
     
-    let recipesCount: Int
-    let recipesList: [RecipeResponse.Hit]
+    var recipesList: [RecipeResponse.Hit]
     
-    init(recipesCount: Int, recipesList: [RecipeResponse.Hit]) {
-        self.recipesCount = recipesCount
+    init(recipesList: [RecipeResponse.Hit]) {
         self.recipesList = recipesList
-    }
-    
-    func printRepices() {
-        print(self.recipesCount)
-        print(self.recipesList)
     }
     
     
     // MARK: - Initializer
     
     func viewDidLoad() {
-        printRepices()
+        items?(recipesList)
     }
     
     // MARK: - Outputs
+    
+    var items: (([RecipeResponse.Hit]) -> Void)?
+    var itemsCount:((Int) -> Void)?
     
     // MARK: - Inputs
 }

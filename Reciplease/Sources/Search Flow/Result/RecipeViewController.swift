@@ -10,9 +10,7 @@ import UIKit
 final class RecipeViewController: UIViewController {
     
     var viewModel: RecipeViewModel!
-   // private let dataSource = RecipeViewDataSource()
-    
-    private var items: [String] = ["troute", "yolo", "splash"]
+    private let dataSource = RecipeViewDataSource()
     
     // MARK: Input
     @IBOutlet weak var tableView: UITableView!
@@ -23,32 +21,18 @@ final class RecipeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.dataSource = dataSource
-        //tableView.delegate = dataSource
-
+        bind(to: viewModel)
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
         //bind(to: dataSource)
-        //bind(to: viewModel)
 
         viewModel.viewDidLoad()
     }
-
-   //private func bind(to source: RecipeViewDataSource) {
-       
-   //}
     
-    //private func bind(to: RecipeViewModel) {
-
-    //}
-}
-
-extension RecipeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3 // items.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = items[indexPath.item]
-        return cell
+    private func bind(to: RecipeViewModel) {
+        viewModel.items = { [weak self] items in
+            self?.dataSource.items = items
+            self?.tableView.reloadData()
+        }
     }
 }
