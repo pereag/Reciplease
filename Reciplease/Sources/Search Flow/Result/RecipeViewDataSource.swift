@@ -24,6 +24,7 @@ final class RecipeViewDataSource: NSObject, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
+        
         cell.TitleLabel.text = "yolo"
         return cell
     }
