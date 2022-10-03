@@ -9,7 +9,7 @@ import UIKit
 
 final class RecipeViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
     
-    var items: [RecipeResponse.Hit] = [] {
+    var items: [Recipe] = [] {
         didSet {
             print(self.items)
             
@@ -23,9 +23,9 @@ final class RecipeViewDataSource: NSObject, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard items.indices.contains(indexPath.row) else { return .init() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
-        
-        cell.TitleLabel.text = "yolo"
+        // cell.configure(with: hit[indexPath.row])
         return cell
     }
     

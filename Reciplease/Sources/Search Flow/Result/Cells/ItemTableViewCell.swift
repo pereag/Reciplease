@@ -12,4 +12,10 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var dishImage: UIImageView!
+
+    func configure(recipe: Recipe) {
+        TitleLabel.text = recipe.name
+        // ingredientsLabel = recipe.ingredientLines
+        //dishImage = recipe.image
+    }
 }

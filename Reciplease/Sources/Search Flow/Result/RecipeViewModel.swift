@@ -10,9 +10,9 @@ import Foundation
 final class RecipeViewModel {
     // MARK: Private properties
     
-    var recipesList: [RecipeResponse.Hit]
+    var recipesList: [Recipe]
     
-    init(recipesList: [RecipeResponse.Hit]) {
+    init(recipesList: [Recipe]) {
         self.recipesList = recipesList
     }
     
@@ -25,7 +25,7 @@ final class RecipeViewModel {
     
     // MARK: - Outputs
     
-    var items: (([RecipeResponse.Hit]) -> Void)?
+    var items: (([Recipe]) -> Void)?
     var itemsCount:((Int) -> Void)?
     
     // MARK: - Inputs

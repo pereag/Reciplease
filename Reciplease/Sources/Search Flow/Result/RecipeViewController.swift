@@ -27,6 +27,9 @@ final class RecipeViewController: UIViewController {
         //bind(to: dataSource)
 
         viewModel.viewDidLoad()
+
+        // For add Favorit icon
+        //self.navigationItem.rightBarButtonItem = .init(image: <#T##UIImage?#>, style: .plain, target: self, action: <#T##Selector?#>)
     }
     
     private func bind(to: RecipeViewModel) {
