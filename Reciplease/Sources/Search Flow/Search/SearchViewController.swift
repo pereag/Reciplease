@@ -57,7 +57,7 @@ final class SearchViewController: UIViewController {
         viewModel.didPressClear()
     }
 }
-
+ 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count

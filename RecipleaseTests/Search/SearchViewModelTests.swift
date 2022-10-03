@@ -13,21 +13,7 @@ final class SearchViewModelTests: XCTestCase {
     private var repository: MockRepository!
     private var delegate: MockDelegate!
     private var viewModel: SearchViewModel!
-    
-   /* enum Constant {
-        static let mockRecipeResponse = RecipeResponse(
-            from: 1,
-            to: 1,
-            count: 1,
-            hits: []
-        )
-    } */
-    
-    /* override func setUp() {
-        super.setUp()
-        delegate = MockDelegate()
-        repository = MockRepository()
-    } */
+
     func testThatOnViewDidLoad_ThenEveryhtingIsCorrectlyLoaded() {
         let expectation1 = self.expectation(description: "Returned Title")
         let expectation2 = self.expectation(description: "Returned Search PlaceHolder")
@@ -75,13 +61,13 @@ final class SearchViewModelTests: XCTestCase {
         waitForExpectations(timeout: 1.0)
     }
     
-    func testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned() {
+   func testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned() {
         let mockResponse = MockRepository(responses: .success)
         let mockDelegate = MockDelegate()
         viewModel = SearchViewModel(repository: mockResponse, delegate: mockDelegate)
         viewModel.didPressAdd(item: "Banana")
         viewModel.didPressSearch()
-        XCTAssertEqual(mockDelegate.recipes, ["Toto"])
+        XCTAssertEqual(mockDelegate.recipes, [ RecipeResponse(from: 1,to: 1,hits: [])])
     }
     
     func testThatOnDidPressAdd_WithSuccess_IngredientsAppendItem() {
@@ -278,10 +264,10 @@ private final class MockRepository: SearchRepositoryType {
 }
 
 private final class MockDelegate: SearchViewControllerDelegate {
-    var recipes: [String] = []
     
-    func shouldPresent(recipes: [String]) {
-        self.recipes = recipes
+    var recipes: [RecipeResponse] = []
+    func shouldPresent(recipes: Reciplease.RecipeResponse) {
+        self.recipes = [recipes]
     }
 }
 
@@ -292,7 +278,6 @@ private extension MockRepository.Responses {
                 RecipeResponse(
                     from: 1,
                     to: 1,
-                    count: 1,
                     hits: []
                 )
             )
