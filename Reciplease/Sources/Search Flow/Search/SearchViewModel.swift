@@ -66,12 +66,20 @@ final class SearchViewModel {
         repository.getRecipe(for: ingredients, callback: { [weak self] result in
             switch result {
             case let .success(response):
+                if response.hits.count == 0 {
+                    let alertContent = AlertContent(
+                       title: "Alert",
+                       message: "No result.",
+                       cancelTitle: "Ok"
+                    )
+                    self?.displayedAlert?(alertContent)
+                }
                 let recipes: [Recipe] = response.hits.map { hit in
                     return Recipe(hit: hit)
                 }
                 
                 // TODO: - Map response to recipes
-                //print(response)
+                print(response)
                 self?.delegate?.shouldPresent(recipes: recipes)
             case let .failure(error):
                 let alertContent = AlertContent(

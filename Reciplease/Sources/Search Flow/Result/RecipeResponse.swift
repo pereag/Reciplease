@@ -28,6 +28,7 @@ struct RecipeResponse: Codable, Equatable {
             let url: String
             let shareAs: String
             let cautions, ingredientLines: [String]
+            let totalTime: Double
         }
     }
 }

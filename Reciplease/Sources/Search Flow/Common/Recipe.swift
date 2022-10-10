@@ -13,6 +13,7 @@ struct Recipe {
     let url : String
     let source: String
     let caution, ingredientLines: [String]
+    let totalTime: Double
     
 }
 
@@ -24,5 +25,6 @@ extension Recipe {
         self.source = hit.recipe.source
         self.caution = hit.recipe.cautions
         self.ingredientLines = hit.recipe.ingredientLines
+        self.totalTime = hit.recipe.totalTime
     }
 }
