@@ -6,21 +6,32 @@
 //
 
 import UIKit
+import AlamofireImage
 
-class ItemTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var ingredientsLabel: UILabel!
-    @IBOutlet weak var dishImage: UIImageView!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var timeView: UIView!
-    @IBOutlet var gradienBackgroundView: UIView!
+final class ItemTableViewCell: UITableViewCell {
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var ingredientsLabel: UILabel!
+    @IBOutlet private weak var dishImage: UIImageView!
+    @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var timeView: UIView!
+    @IBOutlet private weak var gradienBackgroundView: GradientView!
     
     func configure(recipe: Recipe) {
+        DispatchQueue.main.async {
+            self.setGradientBackground()
+        }
         titleLabel.text = recipe.name
         ingredientsLabel.text = recipe.ingredientLines.joined(separator: " ,")
-        dishImage.load(url:recipe.image)
-        setGradientBackground(view: self.gradienBackgroundView)
+        
+        if let url = URL(string: recipe.image) {
+            dishImage.af.setImage(withURL: url)
+            dishImage.contentMode = .scaleAspectFill
+        }
+        
+        timeView.layer.cornerRadius = 5;
+        timeView.layer.borderWidth = 2;
+        timeView.layer.borderColor = UIColor.white.cgColor;
+        
         if recipe.totalTime == 0.0 {
             timeView.alpha = 0
         } else {
@@ -29,30 +40,14 @@ class ItemTableViewCell: UITableViewCell {
         }
     }
     
-    func setGradientBackground(view: UIView) {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.black.cgColor, UIColor.white.withAlphaComponent(0.5)]
-        gradientLayer.startPoint = CGPoint(x : 0.5, y : 1.0)
-        gradientLayer.endPoint = CGPoint(x : 0.5, y : 0.0)
-        gradientLayer.locations = [ 0,1]
-        gradientLayer.frame = self.frame
-        view.layer.insertSublayer(gradientLayer, at : 0)
-      }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        //setGradientBackground()
+    }
     
-    
-}
-extension UIImageView {
-    func load(url: String) {
-        let url = URL(string: url)
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url!) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-        self.contentMode = .scaleAspectFill
+    private func setGradientBackground() {
+        let startColor = UIColor.clear
+        let endColor = UIColor.black
+        gradienBackgroundView.updateGradient(with: .vertical, colors: startColor, endColor)
     }
 }

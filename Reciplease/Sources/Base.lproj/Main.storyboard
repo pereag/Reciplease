@@ -181,15 +181,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="428" height="194"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tDH-sZ-yRg">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tDH-sZ-yRg">
                                                     <rect key="frame" x="0.0" y="0.0" width="428" height="194"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="tDH-sZ-yRg" secondAttribute="height" multiplier="214:97" id="LrB-w2-49f"/>
                                                         <constraint firstAttribute="height" constant="194" id="fQw-AG-Pbh"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1pM-zk-7al">
-                                                    <rect key="frame" x="0.0" y="0.0" width="428" height="194"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1pM-zk-7al" customClass="GradientView" customModule="Reciplease" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="75" width="428" height="119"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWS-tx-M7q">
                                                     <rect key="frame" x="20" y="152.66666666666666" width="388" height="25.333333333333343"/>
@@ -232,7 +233,7 @@
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titre" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUS-N6-1hX">
                                                     <rect key="frame" x="20" y="119.33333333333333" width="388" height="25.333333333333329"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -243,7 +244,7 @@
                                                 <constraint firstItem="IWS-tx-M7q" firstAttribute="leading" secondItem="L8I-D4-l1b" secondAttribute="leadingMargin" id="Hk2-d8-xeb"/>
                                                 <constraint firstAttribute="bottom" secondItem="tDH-sZ-yRg" secondAttribute="bottom" id="HpJ-Cf-Ml4"/>
                                                 <constraint firstAttribute="trailing" secondItem="SFd-TR-byq" secondAttribute="trailing" constant="12" id="NWG-Ll-ZxG"/>
-                                                <constraint firstItem="1pM-zk-7al" firstAttribute="top" secondItem="L8I-D4-l1b" secondAttribute="top" id="YWR-qx-pme"/>
+                                                <constraint firstItem="1pM-zk-7al" firstAttribute="top" secondItem="L8I-D4-l1b" secondAttribute="top" constant="75" id="YWR-qx-pme"/>
                                                 <constraint firstItem="1pM-zk-7al" firstAttribute="leading" secondItem="L8I-D4-l1b" secondAttribute="leading" id="ZzS-re-mbA"/>
                                                 <constraint firstItem="HUS-N6-1hX" firstAttribute="trailing" secondItem="L8I-D4-l1b" secondAttribute="trailingMargin" id="kIJ-0a-fmd"/>
                                                 <constraint firstAttribute="trailing" secondItem="tDH-sZ-yRg" secondAttribute="trailing" id="kpy-fT-CBA"/>

@@ -31,6 +31,9 @@
 		D8BB4FD228854CE7003C5D60 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8BB4FD028854CE7003C5D60 /* Reciplease.xcdatamodeld */; };
 		D8BB4FD428854CEF003C5D60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BB4FD328854CEF003C5D60 /* Assets.xcassets */; };
 		D8BB4FD728854CEF003C5D60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BB4FD528854CEF003C5D60 /* LaunchScreen.storyboard */; };
+		D8C197D528F475C4001B0F42 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = D8C197D428F475C4001B0F42 /* AlamofireImage */; };
+		D8C197D828F47862001B0F42 /* LinearGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C197D728F47862001B0F42 /* LinearGradientLayer.swift */; };
+		D8C197DA28F47875001B0F42 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C197D928F47874001B0F42 /* GradientView.swift */; };
 		D8F5372A2897C42600CFFBC1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F537292897C42600CFFBC1 /* AppCoordinator.swift */; };
 		D8F5372C2897C96200CFFBC1 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F5372B2897C96200CFFBC1 /* Screens.swift */; };
 		D8F5372E2897E76B00CFFBC1 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F5372D2897E76B00CFFBC1 /* HomeCoordinator.swift */; };
@@ -78,6 +81,8 @@
 		D8BB4FD628854CEF003C5D60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8BB4FD828854CEF003C5D60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8BB4FDD28854CF0003C5D60 /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8C197D728F47862001B0F42 /* LinearGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGradientLayer.swift; sourceTree = "<group>"; };
+		D8C197D928F47874001B0F42 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		D8F537292897C42600CFFBC1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D8F5372B2897C96200CFFBC1 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
 		D8F5372D2897E76B00CFFBC1 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
@@ -92,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8C197D528F475C4001B0F42 /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +226,15 @@
 			path = RecipleaseTests;
 			sourceTree = "<group>";
 		};
+		D8C197D628F47849001B0F42 /* style */ = {
+			isa = PBXGroup;
+			children = (
+				D8C197D728F47862001B0F42 /* LinearGradientLayer.swift */,
+				D8C197D928F47874001B0F42 /* GradientView.swift */,
+			);
+			path = style;
+			sourceTree = "<group>";
+		};
 		D8F537272897C2B100CFFBC1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +244,7 @@
 				D85EB4AF28D8679100EFD4A6 /* AlerteContent.swift */,
 				D804225328D87337006BD835 /* UIViewManager.swift */,
 				D8F537292897C42600CFFBC1 /* AppCoordinator.swift */,
+				D8C197D628F47849001B0F42 /* style */,
 				D8F537282897C2C500CFFBC1 /* Navigation */,
 				D8F5372F2897F14500CFFBC1 /* Search Flow */,
 				D8B2E22428C10B46002BBD97 /* Network */,
@@ -273,6 +289,9 @@
 			dependencies = (
 			);
 			name = Reciplease;
+			packageProductDependencies = (
+				D8C197D428F475C4001B0F42 /* AlamofireImage */,
+			);
 			productName = Reciplease;
 			productReference = D8BB4FC428854CE7003C5D60 /* Reciplease.app */;
 			productType = "com.apple.product-type.application";
@@ -324,6 +343,9 @@
 				Base,
 			);
 			mainGroup = D8BB4FBB28854CE6003C5D60;
+			packageReferences = (
+				D8C197D328F475C4001B0F42 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+			);
 			productRefGroup = D8BB4FC528854CE7003C5D60 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -377,10 +399,12 @@
 				D8BB4FC828854CE7003C5D60 /* AppDelegate.swift in Sources */,
 				D8F5372C2897C96200CFFBC1 /* Screens.swift in Sources */,
 				D8B2E23728C64F2B002BBD97 /* RecipeResponse.swift in Sources */,
+				D8C197DA28F47875001B0F42 /* GradientView.swift in Sources */,
 				D804225428D87337006BD835 /* UIViewManager.swift in Sources */,
 				D8F537352897F1BA00CFFBC1 /* SearchRepository.swift in Sources */,
 				D8B2E22F28C10FE6002BBD97 /* Context.swift in Sources */,
 				D818DAAD2898318F0041DD88 /* RecipeViewController.swift in Sources */,
+				D8C197D828F47862001B0F42 /* LinearGradientLayer.swift in Sources */,
 				D8B2E23128C22A88002BBD97 /* Endpoint.swift in Sources */,
 				D89CA4C528EB3D2400032860 /* Recipe.swift in Sources */,
 				D85EB4B028D8679100EFD4A6 /* AlerteContent.swift in Sources */,
@@ -683,6 +707,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D8C197D328F475C4001B0F42 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D8C197D428F475C4001B0F42 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D8C197D328F475C4001B0F42 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D8BB4FD028854CE7003C5D60 /* Reciplease.xcdatamodeld */ = {
