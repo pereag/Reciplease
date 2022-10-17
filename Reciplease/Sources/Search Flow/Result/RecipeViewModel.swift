@@ -33,6 +33,7 @@ final class RecipeViewModel {
     // MARK: - Inputs
     
     func didPressDetailsButtonCellView(index: Int) {
+        guard recipesList.indices.contains(index) else { return }
         delegate?.shouldPresent(recipe: recipesList[index])
     }
 }

@@ -62,12 +62,16 @@ final class SearchViewModelTests: XCTestCase {
     }
     
    func testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned() {
-        let mockResponse = MockRepository(responses: .success)
+        let mockRepository = MockRepository(responses: .success)
         let mockDelegate = MockDelegate()
-        viewModel = SearchViewModel(repository: mockResponse, delegate: mockDelegate)
+       
+        viewModel = SearchViewModel(repository: mockRepository, delegate: mockDelegate)
+       
         viewModel.didPressAdd(item: "Banana")
+       
         viewModel.didPressSearch()
-        XCTAssertEqual(mockDelegate.recipes, [ RecipeResponse(from: 1,to: 1,hits: [])])
+       
+       XCTAssertTrue(!mockDelegate.returnedRecipes.isEmpty)
     }
     
     func testThatOnDidPressAdd_WithSuccess_IngredientsAppendItem() {
@@ -264,27 +268,17 @@ private final class MockRepository: SearchRepositoryType {
 }
 
 private final class MockDelegate: SearchViewControllerDelegate {
-    func shouldPresent(recipes: [Reciplease.Recipe]) {
-        print("test")
-    }
+    var returnedRecipes: [Recipe] = []
     
-    
-    var recipes: [RecipeResponse] = []
-    func shouldPresent(recipes: Reciplease.RecipeResponse) {
-        self.recipes = [recipes]
+    func shouldPresent(recipes: [Recipe]) {
+        returnedRecipes = recipes
     }
 }
 
 private extension MockRepository.Responses {
     static var success: MockRepository.Responses {
         return .init(
-            onGetRecipe: .success(
-                RecipeResponse(
-                    from: 1,
-                    to: 1,
-                    hits: []
-                )
-            )
+            onGetRecipe: .success(mockRecipeResponse)
         )
     }
     
@@ -297,7 +291,11 @@ private extension MockRepository.Responses {
     enum MockError: Error {
         case mock
     }
+
+    static let mockRecipeResponse = try! JSONDecoder().decode(RecipeResponse.self, from: MockData.recipeData)
 }
+
+
 
 
 

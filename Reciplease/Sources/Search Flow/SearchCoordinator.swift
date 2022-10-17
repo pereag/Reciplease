@@ -59,6 +59,4 @@ extension SearchCoordinator: RecipeViewControllerDelegate {
     func shouldPresent(recipe: Recipe) {
         showDetailsScreen(recipe: recipe)
     }
-    
 }
-
