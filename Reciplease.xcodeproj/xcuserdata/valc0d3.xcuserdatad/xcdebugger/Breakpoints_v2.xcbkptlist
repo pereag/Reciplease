@@ -46,9 +46,9 @@
             filePath = "Reciplease/Sources/Search Flow/Result/Cells/ItemTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "configure(recipe:)"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "configure(recipe:viewModel:index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -62,8 +62,8 @@
             filePath = "Reciplease/Sources/Search Flow/Result/Cells/ItemTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
             landmarkName = "ItemTableViewCell"
             landmarkType = "3">
             <Locations>
@@ -158,6 +158,134 @@
                   offsetFromSymbolStart = "108">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7F3652FF-C3CD-4C40-A900-D936F3B4AFB1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipleaseTests/Search/SearchViewModelTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7F3652FF-C3CD-4C40-A900-D936F3B4AFB1 - 323b722daadba1ca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipleaseTests.SearchViewModelTests.testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/valc0d3/Developer/mobile/swift/Reciplease/RecipleaseTests/Search/SearchViewModelTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "792">
+               </Location>
+               <Location
+                  uuid = "7F3652FF-C3CD-4C40-A900-D936F3B4AFB1 - 323b722daadba1ca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipleaseTests.SearchViewModelTests.testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/valc0d3/Developer/mobile/swift/Reciplease/RecipleaseTests/Search/SearchViewModelTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "784">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C6BFA22E-FDF0-4ED4-A531-C74ECC2C3D32"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reciplease/Sources/Search Flow/Search/SearchViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "didPressSearch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B9458CD-E276-4605-AC89-5AE6E1D6141E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reciplease/Sources/Search Flow/Search/SearchViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "didPressSearch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C0348C0C-2941-42E1-A682-F019298485F6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipleaseTests/Search/SearchViewModelTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "testThatOnDidPressSearch_withFailure_DisplayAnAlert()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2E97BC50-A927-48AC-8E3D-13D5793C6931"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipleaseTests/Search/SearchViewModelTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9AAD5FA4-6141-46D7-ABC1-110E6C0D1F31"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Reciplease/Sources/Search Flow/Result/RecipeViewDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

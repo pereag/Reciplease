@@ -26,8 +26,14 @@ protocol SearchViewControllerDelegate: AnyObject {
     func shouldPresent(recipes: [Recipe])
 }
 
+protocol RecipeViewControllerDelegate: AnyObject {
+    func shouldPresent(recipe: Recipe)
+}
+
+
+
 extension Screens {
-    func creatSearchViewController(delegate: SearchViewControllerDelegate) -> UIViewController {
+    func createSearchViewController(delegate: SearchViewControllerDelegate) -> UIViewController {
         let repository = SearchRepository(client: context.client)
         let viewModel = SearchViewModel(
             repository: repository,
@@ -40,9 +46,21 @@ extension Screens {
         return viewController
     }
 
-    func createResultViewController(recipes: [Recipe]) -> UIViewController {
+    func createResultViewController(recipes: [Recipe], delegate: RecipeViewControllerDelegate) -> UIViewController {
+        let viewModel = RecipeViewModel(
+            recipesList: recipes,
+            delegate: delegate
+        )
         let viewController = storyBoard.instantiateViewController(withIdentifier: "RecipeViewController") as! RecipeViewController
-        let viewModel = RecipeViewModel(recipesList: recipes)
+        viewController.viewModel = viewModel
+        return viewController
+    }
+    
+    func createDetailsViewController(recipe: Recipe) -> UIViewController {
+        let viewController = storyBoard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        let viewModel = DetailsViewModel(
+            recipe: recipe
+        )
         viewController.viewModel = viewModel
         return viewController
     }

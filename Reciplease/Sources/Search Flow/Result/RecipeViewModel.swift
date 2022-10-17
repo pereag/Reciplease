@@ -8,12 +8,15 @@
 import Foundation
 
 final class RecipeViewModel {
+    
     // MARK: Private properties
+    private var recipesList: [Recipe]
+    private var delegate: RecipeViewControllerDelegate?
     
-    var recipesList: [Recipe]
     
-    init(recipesList: [Recipe]) {
+    init(recipesList: [Recipe], delegate: RecipeViewControllerDelegate) {
         self.recipesList = recipesList
+        self.delegate = delegate
     }
     
     
@@ -26,7 +29,10 @@ final class RecipeViewModel {
     // MARK: - Outputs
     
     var items: (([Recipe]) -> Void)?
-    var itemsCount:((Int) -> Void)?
     
     // MARK: - Inputs
+    
+    func didPressDetailsButtonCellView(index: Int) {
+        delegate?.shouldPresent(recipe: recipesList[index])
+    }
 }

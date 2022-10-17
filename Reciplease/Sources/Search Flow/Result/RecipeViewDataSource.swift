@@ -9,13 +9,8 @@ import UIKit
 
 final class RecipeViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
     
-    var items: [Recipe] = [] {
-        didSet {
-            //print(self.items)
-            
-            
-        }
-    }
+    var viewModel: RecipeViewModel!
+    var items: [Recipe] = []
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,20 +20,8 @@ final class RecipeViewDataSource: NSObject, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard items.indices.contains(indexPath.row) else { return .init() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
-        cell.configure(recipe: items[indexPath.row])
-
+        
+        cell.configure(recipe: items[indexPath.row], viewModel: self.viewModel, index: indexPath)
         return cell
     }
-    
-    
-    /* func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "yolo"
-        return cell
-    } */
-   
 }

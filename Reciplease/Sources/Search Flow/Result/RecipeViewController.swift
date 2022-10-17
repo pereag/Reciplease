@@ -24,18 +24,18 @@ final class RecipeViewController: UIViewController {
         bind(to: viewModel)
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
-        //bind(to: dataSource)
-
         viewModel.viewDidLoad()
-
-        // For add Favorit icon
-        //self.navigationItem.rightBarButtonItem = .init(image: <#T##UIImage?#>, style: .plain, target: self, action: <#T##Selector?#>)
     }
     
     private func bind(to: RecipeViewModel) {
         viewModel.items = { [weak self] items in
             self?.dataSource.items = items
+            self?.dataSource.viewModel = self?.viewModel
             self?.tableView.reloadData()
         }
+    }
+    
+    private func didPressDetailsButtonCellView() {
+        viewModel.didPressDetailsButtonCellView(index: 1)
     }
 }

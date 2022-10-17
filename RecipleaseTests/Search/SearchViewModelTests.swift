@@ -264,6 +264,10 @@ private final class MockRepository: SearchRepositoryType {
 }
 
 private final class MockDelegate: SearchViewControllerDelegate {
+    func shouldPresent(recipes: [Reciplease.Recipe]) {
+        print("test")
+    }
+    
     
     var recipes: [RecipeResponse] = []
     func shouldPresent(recipes: Reciplease.RecipeResponse) {

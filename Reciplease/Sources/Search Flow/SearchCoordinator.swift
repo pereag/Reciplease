@@ -28,15 +28,22 @@ final class SearchCoordinator {
     }
 
     private func showSearchScreen() {
-        let viewController = screens.creatSearchViewController(
+        let viewController = screens.createSearchViewController(
             delegate: self
         )
         presenter.viewControllers = [viewController]
     }
 
-    private func showResult(recipes: [Recipe]) {
+    private func showResultScreen(recipes: [Recipe]) {
         DispatchQueue.main.async {
-            let viewController = self.screens.createResultViewController(recipes: recipes)
+            let viewController = self.screens.createResultViewController(recipes: recipes, delegate: self)
+            self.presenter.pushViewController(viewController, animated: true)
+        }
+    }
+    
+    private func showDetailsScreen(recipe: Recipe) {
+        DispatchQueue.main.async {
+            let viewController = self.screens.createDetailsViewController(recipe: recipe)
             self.presenter.pushViewController(viewController, animated: true)
         }
     }
@@ -44,7 +51,14 @@ final class SearchCoordinator {
 
 extension SearchCoordinator: SearchViewControllerDelegate {
     func shouldPresent(recipes: [Recipe]) {
-        showResult(recipes: recipes)
+        showResultScreen(recipes: recipes)
     }
+}
+
+extension SearchCoordinator: RecipeViewControllerDelegate {
+    func shouldPresent(recipe: Recipe) {
+        showDetailsScreen(recipe: recipe)
+    }
+    
 }
 

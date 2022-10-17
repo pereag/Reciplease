@@ -9,14 +9,33 @@ import UIKit
 import AlamofireImage
 
 final class ItemTableViewCell: UITableViewCell {
+    
+    var viewModel: RecipeViewModel?
+    var index: IndexPath?
+    
+    //MARK: Input
+    
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var ingredientsLabel: UILabel!
     @IBOutlet private weak var dishImage: UIImageView!
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var timeView: UIView!
     @IBOutlet private weak var gradienBackgroundView: GradientView!
+    @IBOutlet private weak var detailsButton: UIButton!
     
-    func configure(recipe: Recipe) {
+    
+    // MARK: Output
+    
+    @IBAction func didPressDetailsButton(_ sender: Any) {
+        guard let index = self.index else { return }
+        viewModel?.didPressDetailsButtonCellView(index: index.row)
+    }
+    
+    
+    
+    func configure(recipe: Recipe, viewModel: RecipeViewModel, index: IndexPath) {
+        self.index = index
+        self.viewModel = viewModel
         DispatchQueue.main.async {
             self.setGradientBackground()
         }
