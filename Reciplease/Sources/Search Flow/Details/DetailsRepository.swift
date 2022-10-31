@@ -7,6 +7,23 @@
 
 import Foundation
 
+
+class DetailsRepository : DetailsRepositoryType {
+    func checkIfIsFavorite() -> Bool {
+        return true
+    }
+    
+    func addToFavorites() {
+   
+    }
+    
+    func removeFromFavorites() {
+
+    }
+    
+    
+}
+
 protocol DetailsRepositoryType {
     func checkIfIsFavorite() -> Bool
     func addToFavorites()

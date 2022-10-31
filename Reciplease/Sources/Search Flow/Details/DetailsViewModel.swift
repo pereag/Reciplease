@@ -21,15 +21,17 @@ class DetailsViewModel {
     
     // MARK: Outputs
     
-    var ingredientsText: ((String) -> Void)?
+    var ingredientsTitle: ((String) -> Void)?
+    var buttonLabel: ((String) -> Void)?
     var starState: ((Bool) -> Void)?
+    var currentRecipe: ((Recipe) -> Void)?
     
     // MARK: CycleLife
     
     func viewDidLoad() {
-        
-//        ingredientsText?(recipe.ingredientLines)
-        //ingredientsLabel?(ingredientsTitle)
+        ingredientsTitle?(Constants.ingredientsTitle)
+        buttonLabel?(Constants.getDirectionTitle)
+        currentRecipe?(recipe)
     }
 
     private var isFavorite = false {

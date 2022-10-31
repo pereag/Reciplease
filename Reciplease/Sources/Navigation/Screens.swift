@@ -58,8 +58,10 @@ extension Screens {
     
     func createDetailsViewController(recipe: Recipe) -> UIViewController {
         let viewController = storyBoard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        let repository = DetailsRepository()
         let viewModel = DetailsViewModel(
-            recipe: recipe
+            recipe: recipe,
+            repository: repository as DetailsRepositoryType
         )
         viewController.viewModel = viewModel
         return viewController

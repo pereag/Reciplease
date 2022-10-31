@@ -59,11 +59,6 @@ final class ItemTableViewCell: UITableViewCell {
         }
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        //setGradientBackground()
-    }
-    
     private func setGradientBackground() {
         let startColor = UIColor.clear
         let endColor = UIColor.black

@@ -79,7 +79,7 @@ final class SearchViewModel {
                 }
                 
                 // TODO: - Map response to recipes
-                print(response)
+               
                 self?.delegate?.shouldPresent(recipes: recipes)
             case let .failure(error):
                 let alertContent = AlertContent(
