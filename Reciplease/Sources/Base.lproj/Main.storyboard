@@ -53,7 +53,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="-1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3Iw-EV-cbQ">
-                                        <rect key="frame" x="12" y="69.666666666666686" width="351" height="432"/>
+                                        <rect key="frame" x="12" y="69.666666666666686" width="351" height="431.99999999999994"/>
                                         <color key="sectionIndexBackgroundColor" red="0.26918029789999998" green="0.22045761350000001" blue="0.1579273641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="V6l-xp-ECE" style="IBUITableViewCellStyleDefault" id="cez-iA-MhR">
@@ -347,7 +347,7 @@
                                 <rect key="frame" x="233" y="59" width="130" height="43"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DxL-MJ-4O5">
-                                        <rect key="frame" x="100" y="12.333333333333329" width="22" height="19"/>
+                                        <rect key="frame" x="100" y="11.33333333333333" width="22" height="20.333333333333329"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20.329999999999998" id="Xhp-64-xbM"/>
@@ -420,6 +420,7 @@
                         <outlet property="getDirectionButton" destination="uJP-EM-poM" id="lAH-iX-NGG"/>
                         <outlet property="gradienBackgroundView" destination="ReK-n6-T4f" id="nIx-nT-eWB"/>
                         <outlet property="ingredientsLabel" destination="jzJ-kf-MGK" id="AhL-ed-2X3"/>
+                        <outlet property="tableView" destination="NJC-Al-W8o" id="rnp-xs-lhd"/>
                         <outlet property="timeView" destination="uJA-Kt-OVP" id="qt8-Cw-9Ih"/>
                         <outlet property="titleLabel" destination="RCc-eW-XP9" id="Azd-Ou-mYl"/>
                     </connections>

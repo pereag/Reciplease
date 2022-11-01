@@ -13,6 +13,7 @@ class DetailsViewModel {
     
     var recipe: Recipe
     private let repository: DetailsRepositoryType
+    private var favorit: Bool = false
     
     init(recipe: Recipe, repository: DetailsRepositoryType) {
         self.recipe = recipe
@@ -23,7 +24,7 @@ class DetailsViewModel {
     
     var ingredientsTitle: ((String) -> Void)?
     var buttonLabel: ((String) -> Void)?
-    var starState: ((Bool) -> Void)?
+    var heartsState: ((Bool) -> Void)?
     var currentRecipe: ((Recipe) -> Void)?
     
     // MARK: CycleLife
@@ -36,7 +37,7 @@ class DetailsViewModel {
 
     private var isFavorite = false {
         didSet {
-            starState?(isFavorite)
+            heartsState?(isFavorite)
         }
     }
     

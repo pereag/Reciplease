@@ -13,7 +13,9 @@ class DetailsViewController: UIViewController {
     // MARK: Properties
     
     var viewModel: DetailsViewModel!
-    var getDirectionButtonUrl: String = ""
+    private var getDirectionButtonUrl: String = ""
+    private var ingredientLines: [String] = []
+    private var favorite: Bool = false
     
     // MARK: Inputs
     
@@ -24,6 +26,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var dishImage: UIImageView!
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var gradienBackgroundView: GradientView!
+    @IBOutlet weak var tableView: UITableView!
     
     // MARK: Cycle Life
     
@@ -31,7 +34,8 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         addTimeViewStyle()
         configure(to: viewModel)
-        self.navigationItem.rightBarButtonItem = .init(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: nil)
+        tableView.dataSource = self
+        addFavoriteStyle()
         viewModel.viewDidLoad()
     }
     
@@ -64,9 +68,22 @@ class DetailsViewController: UIViewController {
                 self?.dishImage.af.setImage(withURL: url)
                 self?.dishImage.contentMode = .scaleAspectFill
             }
+            self?.ingredientLines = currentRecipe.ingredientLines
+        }
+        
+        viewModel.heartsState = { [weak self] heartsState in
+            self?.favorite = heartsState
         }
         setGradientBackground()
         
+    }
+    
+    private func addFavoriteStyle() {
+        if favorite == false {
+            self.navigationItem.rightBarButtonItem = .init(image: UIImage(systemName: "heart"), style: .plain, target: self, action: nil)
+        } else {
+            self.navigationItem.rightBarButtonItem = .init(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: nil)
+        }
     }
     
     private func addTimeViewStyle() {
@@ -85,6 +102,18 @@ class DetailsViewController: UIViewController {
     
     @IBAction func didPressGetDirections(_ sender: Any) {
         UIApplication.shared.open(URL(string: self.getDirectionButtonUrl)!)
+    }
+}
+
+extension DetailsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.ingredientLines.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text =  "- " + self.ingredientLines[indexPath.item]
+        return cell
     }
 }
 
