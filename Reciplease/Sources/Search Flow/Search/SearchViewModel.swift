@@ -50,7 +50,7 @@ final class SearchViewModel {
         addButtonText?(Constants.addButton)
         clearButtonText?(Constants.clearButton)
         searchButtontext?(Constants.searchButton)
-        ingredients = []
+        print("yolo")
     }
 
     func didPressSearch() {

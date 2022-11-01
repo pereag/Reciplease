@@ -15,16 +15,41 @@ final class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindViewModel(to: viewModel)
         tableView.dataSource = self
-        bindViewModel()
+        viewModel.viewDidLoad()
     }
 
-    private func bindViewModel() {
+    private func bindViewModel(to: SearchViewModel) {
         viewModel.items = { [weak self] items in
             DispatchQueue.main.async {
                 self?.items = items
                 self?.tableView.reloadData()
             }
+        }
+        
+        viewModel.titleText = { [weak self] titleText in
+            self?.titleLabel.text = titleText
+        }
+        
+        viewModel.searchPlaceholderText = { [weak self] searchPlaceholderText in
+            self?.addElementField.placeholder = searchPlaceholderText
+        }
+        
+        viewModel.subtitleText = { [weak self] subtitleText in
+            self?.ingredientsLabel.text = subtitleText
+        }
+        
+        viewModel.addButtonText = { [weak self] addButtonText in
+            self?.addButton.setTitle(addButtonText, for: .normal)
+        }
+        
+        viewModel.clearButtonText = { [weak self] clearButtonText in
+            self?.clearButton.setTitle(clearButtonText, for: .normal)
+        }
+        
+        viewModel.searchButtontext = { [weak self] searchButtontext in
+            self?.searchButton.setTitle(searchButtontext, for: .normal)
         }
         
         viewModel.displayedAlert = { [weak self] alertContent in
@@ -39,6 +64,11 @@ final class SearchViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var addElementField: UITextField!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var addButton: UIButton!
+    @IBOutlet private weak var ingredientsLabel: UILabel!
+    @IBOutlet private weak var clearButton: UIButton!
+    @IBOutlet private weak var searchButton: UIButton!
     
     // MARK: output
     
