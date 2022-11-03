@@ -18,6 +18,10 @@ final class SearchViewModelTests: XCTestCase {
         let expectation1 = self.expectation(description: "Returned Title")
         let expectation2 = self.expectation(description: "Returned Search PlaceHolder")
         let expectation3 = self.expectation(description: "Returned Empty Ingredients")
+        let expectation4 = self.expectation(description: "Returned add button text")
+        let expectation5 = self.expectation(description: "Returned searchButton text")
+        let expectation6 = self.expectation(description: "Returned clear button text")
+        //let expectation7 = self.expectation(description: "Returned empty items")
         let mockResponse = MockRepository(responses: .success)
         let mockDelegate = MockDelegate()
         viewModel = SearchViewModel(
@@ -37,24 +41,28 @@ final class SearchViewModelTests: XCTestCase {
         
         viewModel.subtitleText = { text in
             XCTAssertEqual(text, "Your ingredients")
+            expectation3.fulfill()
         }
         
         viewModel.addButtonText = { text in
             XCTAssertEqual(text, "Add")
+            expectation4.fulfill()
         }
         
         viewModel.searchButtontext = { text in
             XCTAssertEqual(text, "Search for recipes")
+            expectation5.fulfill()
         }
         
         viewModel.clearButtonText = { text in
             XCTAssertEqual(text, "Clear")
+            expectation6.fulfill()
         }
         
-        viewModel.items = { items in
+        /* viewModel.items = { items in
             XCTAssertTrue(items.isEmpty)
-            expectation3.fulfill()
-        }
+            expectation7.fulfill()
+        } */
         
         viewModel.viewDidLoad()
         
@@ -250,6 +258,30 @@ final class SearchViewModelTests: XCTestCase {
         
         waitForExpectations(timeout: 1.0, handler: nil)
     }
+    
+    func testThanOnDidPressSearchWithSuccessButZeroItemsIsReturned() {
+        let expectation = self.expectation(description: "return Alerte error")
+        let mockResponse = MockRepository(responses: .successWithZeroItemsReturned)
+        let mockDelegate = MockDelegate()
+        viewModel = SearchViewModel(repository: mockResponse, delegate: mockDelegate)
+        
+        var counter  = 0
+        
+        viewModel.displayedAlert = { alert in
+            if counter == 0 {
+                XCTAssertEqual(alert.title, "Alert")
+                XCTAssertEqual(alert.message, "No result.")
+                XCTAssertEqual(alert.cancelTitle, "Ok")
+                expectation.fulfill()
+            }
+            counter = counter + 1
+        }
+        viewModel.viewDidLoad()
+        viewModel.didPressAdd(item: "fgfgdggfgdfgggrgrg")
+        viewModel.didPressSearch()
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
 }
 
 private final class MockRepository: SearchRepositoryType {
@@ -282,6 +314,12 @@ private extension MockRepository.Responses {
         )
     }
     
+    static var successWithZeroItemsReturned: MockRepository.Responses {
+        return .init(
+            onGetRecipe: .success(mockRecipeResponseWithZeroItemsReturned)
+        )
+    }
+    
     static var failure: MockRepository.Responses {
         return .init(
             onGetRecipe: .failure(MockError.mock)
@@ -293,6 +331,7 @@ private extension MockRepository.Responses {
     }
 
     static let mockRecipeResponse = try! JSONDecoder().decode(RecipeResponse.self, from: MockData.recipeData)
+    static let mockRecipeResponseWithZeroItemsReturned = try! JSONDecoder().decode(RecipeResponse.self, from: MockData.recipeDataWithZeroResult)
 }
 
 

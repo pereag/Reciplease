@@ -7,12 +7,13 @@
 
 import Foundation
 
+// Le sac a dos de dépendences
 final class Context {
     let client: HTTPClientType
-    // let stack: CoreDataStack
+    let stack: CoreDataStack
 
     init() {
         client = HTTPClient()
-        // stack = CoreDataStack()
+        stack = CoreDataStack(modelName: "Reciplease", type: .prod)
     }
 }

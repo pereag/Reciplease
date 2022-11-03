@@ -12,6 +12,11 @@ enum MockData {
         let path = Bundle.test.path(forResource: "RecipeResponse", ofType: ".json")!
         return try! Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
     }
+    
+    static var recipeDataWithZeroResult: Data {
+        let path = Bundle.test.path(forResource: "EmptyRecipeResponse", ofType: ".json")!
+        return try! Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+    }
 }
 
 

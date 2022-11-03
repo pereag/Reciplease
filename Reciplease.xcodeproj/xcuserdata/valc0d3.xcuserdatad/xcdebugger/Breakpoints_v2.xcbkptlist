@@ -14,8 +14,8 @@
             filePath = "RecipleaseTests/Search/SearchViewModelTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned()"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,8 +170,8 @@
             filePath = "RecipleaseTests/Search/SearchViewModelTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "testThatOnDidPressSearch_withFailure_DisplayAnAlert()"
             landmarkType = "7">
          </BreakpointContent>

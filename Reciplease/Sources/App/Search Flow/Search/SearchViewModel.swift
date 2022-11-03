@@ -73,12 +73,12 @@ final class SearchViewModel {
                        cancelTitle: "Ok"
                     )
                     self?.displayedAlert?(alertContent)
+                    return
                 }
+
                 let recipes: [Recipe] = response.hits.map { hit in
                     return Recipe(hit: hit)
                 }
-                
-                // TODO: - Map response to recipes
                
                 self?.delegate?.shouldPresent(recipes: recipes)
             case let .failure(error):
