@@ -13,12 +13,13 @@ class DetailsRepository : DetailsRepositoryType {
         return true
     }
     
-    func addToFavorites() {
-   
+    func addToFavorites(recipe: Recipe) {
+        print("Add favorite")
+        
     }
     
-    func removeFromFavorites() {
-
+    func removeFromFavorites(url: String) {
+        print("remove favorite")
     }
     
     
@@ -26,6 +27,6 @@ class DetailsRepository : DetailsRepositoryType {
 
 protocol DetailsRepositoryType {
     func checkIfIsFavorite() -> Bool
-    func addToFavorites()
-    func removeFromFavorites()
+    func addToFavorites(recipe: Recipe)
+    func removeFromFavorites(url: String)
 }

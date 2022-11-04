@@ -73,6 +73,7 @@ class DetailsViewController: UIViewController {
         
         viewModel.heartsState = { [weak self] heartsState in
             self?.favorite = heartsState
+            self?.addFavoriteStyle()
         }
         setGradientBackground()
         
@@ -80,9 +81,9 @@ class DetailsViewController: UIViewController {
     
     private func addFavoriteStyle() {
         if favorite == false {
-            self.navigationItem.rightBarButtonItem = .init(image: UIImage(systemName: "heart"), style: .plain, target: self, action: nil)
+            self.navigationItem.rightBarButtonItem = .init(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(didPressFavorite))
         } else {
-            self.navigationItem.rightBarButtonItem = .init(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: nil)
+            self.navigationItem.rightBarButtonItem = .init(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: #selector(didPressFavorite))
         }
     }
     
@@ -96,6 +97,11 @@ class DetailsViewController: UIViewController {
         let startColor = UIColor.clear
         let endColor = UIColor.black
         gradienBackgroundView.updateGradient(with: .vertical, colors: startColor, endColor)
+    }
+    
+    @objc private func didPressFavorite() {
+        favorite = viewModel.didPressFavorite()
+        addFavoriteStyle()
     }
     
     // MARK:  Outputs

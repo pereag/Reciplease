@@ -13,7 +13,7 @@ class DetailsViewModel {
     
     var recipe: Recipe
     private let repository: DetailsRepositoryType
-    private var favorit: Bool = false
+    private var isFavorite = false
     
     init(recipe: Recipe, repository: DetailsRepositoryType) {
         self.recipe = recipe
@@ -33,28 +33,24 @@ class DetailsViewModel {
         ingredientsTitle?(Constants.ingredientsTitle)
         buttonLabel?(Constants.getDirectionTitle)
         currentRecipe?(recipe)
-    }
-
-    private var isFavorite = false {
-        didSet {
-            heartsState?(isFavorite)
-        }
+        heartsState?(isFavorite)
+        print(isFavorite)
     }
     
-    func didPressStar() {
+    func didPressFavorite() -> Bool {
         if isFavorite {
             repository.removeFromFavorites()
         } else {
             repository.addToFavorites()
         }
-    
         isFavorite.toggle()
+        return isFavorite
     }
 }
 
 private extension DetailsViewModel {
     enum Constants {
-        static var ingredientsTitle: String { "Your ingredients :" }
+        static var ingredientsTitle: String { "Your ingredients :"}
         static var getDirectionTitle: String { "Get directions" }
     }
 }
