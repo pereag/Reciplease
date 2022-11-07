@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class RecipeViewController: UIViewController {
+final class RecipeListViewController: UIViewController {
     
-    var viewModel: RecipeViewModel!
-    private let dataSource = RecipeViewDataSource()
+    var viewModel: RecipeListViewModel!
+    private let dataSource = RecipeListViewDataSource()
     
     // MARK: Input
     @IBOutlet weak var tableView: UITableView!
@@ -27,7 +27,7 @@ final class RecipeViewController: UIViewController {
         viewModel.viewDidLoad()
     }
     
-    private func bind(to: RecipeViewModel) {
+    private func bind(to: RecipeListViewModel) {
         viewModel.items = { [weak self] items in
             self?.dataSource.items = items
             self?.dataSource.viewModel = self?.viewModel

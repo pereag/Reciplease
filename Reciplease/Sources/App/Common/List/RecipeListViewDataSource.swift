@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class RecipeViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
+final class RecipeListViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
     
-    var viewModel: RecipeViewModel!
+    var viewModel: RecipeListViewModel!
     var items: [Recipe] = []
     
     

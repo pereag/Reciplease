@@ -10,7 +10,7 @@ import XCTest
 
 final class RecipeViewModelTests: XCTestCase {
     
-    private var ViewModel: RecipeViewModel!
+    private var ViewModel: RecipeListViewModel!
     
     /* func testThatOnViewDidLoad_ThenEveryhtingIsCorrectlyLoaded() {
         ViewModel = RecipeViewModel(recipesList: [RecipeResponse.Hit])

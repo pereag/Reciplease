@@ -27,6 +27,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var gradienBackgroundView: GradientView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var subTitle: UILabel!
     
     // MARK: Cycle Life
     
@@ -52,6 +53,7 @@ class DetailsViewController: UIViewController {
             self?.titleLabel.text = currentRecipe.name
             self?.durationLabel.text = String(currentRecipe.totalTime)
             self?.getDirectionButtonUrl = currentRecipe.url
+            self?.subTitle.text = currentRecipe.ingredientLines.joined(separator: " ,")
             
             if currentRecipe.totalTime == 0.0 {
                 self?.timeView.alpha = 0

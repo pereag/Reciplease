@@ -47,22 +47,36 @@ extension Screens {
     }
 
     func createResultViewController(recipes: [Recipe], delegate: RecipeViewControllerDelegate) -> UIViewController {
-        let viewModel = RecipeViewModel(
+        let viewModel = RecipeListViewModel(
+            isFavorite: false,
             recipesList: recipes,
             delegate: delegate
         )
-        let viewController = storyBoard.instantiateViewController(withIdentifier: "RecipeViewController") as! RecipeViewController
+        let viewController = storyBoard.instantiateViewController(withIdentifier: "RecipeViewController") as! RecipeListViewController
         viewController.viewModel = viewModel
         return viewController
     }
     
     func createDetailsViewController(recipe: Recipe) -> UIViewController {
         let viewController = storyBoard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        let repository = DetailsRepository()
+        let repository = DetailsRepository(stack: context.stack)
         let viewModel = DetailsViewModel(
             recipe: recipe,
             repository: repository as DetailsRepositoryType
         )
+        viewController.viewModel = viewModel
+        return viewController
+    }
+
+    func createFavoriteRecipesViewController(delegate: RecipeViewControllerDelegate) -> UIViewController {
+//        let repository = DetailsRepository(stack: context.stack)
+        let viewModel = RecipeListViewModel(
+            isFavorite: true,
+            repository: repository,
+            recipesList: [],
+            delegate: delegate
+        )
+        let viewController = storyBoard.instantiateViewController(withIdentifier: "RecipeViewController") as! RecipeListViewController
         viewController.viewModel = viewModel
         return viewController
     }

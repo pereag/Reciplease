@@ -10,7 +10,7 @@ import AlamofireImage
 
 final class ItemTableViewCell: UITableViewCell {
     
-    var viewModel: RecipeViewModel?
+    var viewModel: RecipeListViewModel?
     var index: IndexPath?
     
     //MARK: Input
@@ -33,7 +33,7 @@ final class ItemTableViewCell: UITableViewCell {
     
     
     
-    func configure(recipe: Recipe, viewModel: RecipeViewModel, index: IndexPath) {
+    func configure(recipe: Recipe, viewModel: RecipeListViewModel, index: IndexPath) {
         self.index = index
         self.viewModel = viewModel
         DispatchQueue.main.async {

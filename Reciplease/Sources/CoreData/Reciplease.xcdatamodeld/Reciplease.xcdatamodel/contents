@@ -5,7 +5,6 @@
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="ingredientLines" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="subName" optional="YES" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="String"/>
     </entity>
 </model>

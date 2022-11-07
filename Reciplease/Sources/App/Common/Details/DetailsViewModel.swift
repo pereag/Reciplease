@@ -13,7 +13,11 @@ class DetailsViewModel {
     
     var recipe: Recipe
     private let repository: DetailsRepositoryType
-    private var isFavorite = false
+    private var isFavorite = false {
+        didSet {
+            heartsState?(isFavorite)
+        }
+    }
     
     init(recipe: Recipe, repository: DetailsRepositoryType) {
         self.recipe = recipe
@@ -30,21 +34,29 @@ class DetailsViewModel {
     // MARK: CycleLife
     
     func viewDidLoad() {
+        checkIfRecipeIsInFavorite()
         ingredientsTitle?(Constants.ingredientsTitle)
         buttonLabel?(Constants.getDirectionTitle)
         currentRecipe?(recipe)
-        heartsState?(isFavorite)
-        print(isFavorite)
     }
     
     func didPressFavorite() -> Bool {
         if isFavorite {
-            repository.removeFromFavorites()
+            repository.removeFromFavorites(url: recipe.url)
         } else {
-            repository.addToFavorites()
+            repository.addToFavorites(recipe: recipe)
         }
         isFavorite.toggle()
         return isFavorite
+    }
+    
+    func checkIfRecipeIsInFavorite() {
+        do {
+            isFavorite = try repository.checkIfIsFavorite(url: recipe.url)
+            print("Is favorite : ", isFavorite)
+        } catch {
+            print(error)
+        }
     }
 }
 
