@@ -68,7 +68,7 @@ extension Screens {
         return viewController
     }
 
-    func createFavoriteRecipesViewController(delegate: RecipeViewControllerDelegate) -> UIViewController {
+    /* func createFavoriteRecipesViewController(delegate: RecipeViewControllerDelegate) -> UIViewController {
 //        let repository = DetailsRepository(stack: context.stack)
         let viewModel = RecipeListViewModel(
             isFavorite: true,
@@ -79,5 +79,5 @@ extension Screens {
         let viewController = storyBoard.instantiateViewController(withIdentifier: "RecipeViewController") as! RecipeListViewController
         viewController.viewModel = viewModel
         return viewController
-    }
+    } */ 
 }

@@ -19,7 +19,7 @@ final class RecipeListViewModel {
         isFavorite: Bool,
         recipesList: [Recipe],
         repository: RecipeListRepositoryType? = nil,
-        delegate: RecipeViewControllerDelegate
+        delegate: RecipeViewControllerDelegate? = nil
     ) {
         self.isFavorite = isFavorite
         self.repository = repository

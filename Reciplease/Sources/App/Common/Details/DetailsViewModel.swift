@@ -53,7 +53,6 @@ class DetailsViewModel {
     func checkIfRecipeIsInFavorite() {
         do {
             isFavorite = try repository.checkIfIsFavorite(url: recipe.url)
-            print("Is favorite : ", isFavorite)
         } catch {
             print(error)
         }

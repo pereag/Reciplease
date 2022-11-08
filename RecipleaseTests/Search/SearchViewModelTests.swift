@@ -21,7 +21,6 @@ final class SearchViewModelTests: XCTestCase {
         let expectation4 = self.expectation(description: "Returned add button text")
         let expectation5 = self.expectation(description: "Returned searchButton text")
         let expectation6 = self.expectation(description: "Returned clear button text")
-        //let expectation7 = self.expectation(description: "Returned empty items")
         let mockResponse = MockRepository(responses: .success)
         let mockDelegate = MockDelegate()
         viewModel = SearchViewModel(
@@ -58,11 +57,6 @@ final class SearchViewModelTests: XCTestCase {
             XCTAssertEqual(text, "Clear")
             expectation6.fulfill()
         }
-        
-        /* viewModel.items = { items in
-            XCTAssertTrue(items.isEmpty)
-            expectation7.fulfill()
-        } */
         
         viewModel.viewDidLoad()
         
