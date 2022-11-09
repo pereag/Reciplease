@@ -51,6 +51,7 @@ final class HomeCoordinator: NSObject, UITabBarControllerDelegate {
 
     // MARK: - Flows
     private var searchCoordinator: SearchCoordinator?
+    private var favoritesCoordinator: FavoritesCoordinator?
 
     // MARK: - Init
 
@@ -79,7 +80,8 @@ final class HomeCoordinator: NSObject, UITabBarControllerDelegate {
     }
 
     private func showFavorites() {
-        // TODO: - To implement later
+        favoritesCoordinator = FavoritesCoordinator(presenter: tabBarSource[.favorites], screens: screens)
+        favoritesCoordinator?.start()
     }
 }
 

@@ -49,7 +49,3 @@ final class RecipeListViewModel {
         delegate?.shouldPresent(recipe: recipesList[index])
     }
 }
-
-protocol RecipeListRepositoryType {
-    func getRecipes() -> [Recipe]
-}

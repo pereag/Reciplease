@@ -30,8 +30,6 @@ protocol RecipeViewControllerDelegate: AnyObject {
     func shouldPresent(recipe: Recipe)
 }
 
-
-
 extension Screens {
     func createSearchViewController(delegate: SearchViewControllerDelegate) -> UIViewController {
         let repository = SearchRepository(client: context.client)
@@ -46,7 +44,7 @@ extension Screens {
         return viewController
     }
 
-    func createResultViewController(recipes: [Recipe], delegate: RecipeViewControllerDelegate) -> UIViewController {
+    func createRecipeListViewController(recipes: [Recipe], delegate: RecipeViewControllerDelegate) -> UIViewController {
         let viewModel = RecipeListViewModel(
             isFavorite: false,
             recipesList: recipes,
@@ -68,16 +66,16 @@ extension Screens {
         return viewController
     }
 
-    /* func createFavoriteRecipesViewController(delegate: RecipeViewControllerDelegate) -> UIViewController {
-//        let repository = DetailsRepository(stack: context.stack)
+    func createFavoriteRecipesListViewController(delegate: RecipeViewControllerDelegate) -> UIViewController {
+        let repository = RecipeListRepository(stack: context.stack)
         let viewModel = RecipeListViewModel(
             isFavorite: true,
-            repository: repository,
             recipesList: [],
+            repository: repository,
             delegate: delegate
         )
         let viewController = storyBoard.instantiateViewController(withIdentifier: "RecipeViewController") as! RecipeListViewController
         viewController.viewModel = viewModel
         return viewController
-    } */ 
+    }
 }

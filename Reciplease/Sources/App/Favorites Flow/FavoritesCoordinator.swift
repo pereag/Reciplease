@@ -1,13 +1,13 @@
 //
-//  SearchCoordinator.swift
+//  FavoritesCoordinator.swift
 //  Reciplease
 //
-//  Created by Valc0d3 on 01/08/2022.
+//  Created by Valc0d3 on 09/11/2022.
 //
 
 import UIKit
 
-final class SearchCoordinator {
+final class FavoritesCoordinator {
 
     // MARK: - Properties
 
@@ -24,19 +24,12 @@ final class SearchCoordinator {
     // MARK: - Coodinator
 
     func start() {
-        showSearchScreen()
+        showRecipesListScreen()
     }
 
-    private func showSearchScreen() {
-        let viewController = screens.createSearchViewController(
-            delegate: self
-        )
-        presenter.viewControllers = [viewController]
-    }
-
-    private func showRecipesListScreen(recipes: [Recipe]) {
+    private func showRecipesListScreen() {
         DispatchQueue.main.async {
-            let viewController = self.screens.createRecipeListViewController(recipes: recipes, delegate: self)
+            let viewController = self.screens.createFavoriteRecipesListViewController(delegate: self)
             self.presenter.pushViewController(viewController, animated: true)
         }
     }
@@ -49,13 +42,7 @@ final class SearchCoordinator {
     }
 }
 
-extension SearchCoordinator: SearchViewControllerDelegate {
-    func shouldPresent(recipes: [Recipe]) {
-        showRecipesListScreen(recipes: recipes)
-    }
-}
-
-extension SearchCoordinator: RecipeViewControllerDelegate {
+extension FavoritesCoordinator: RecipeViewControllerDelegate {
     func shouldPresent(recipe: Recipe) {
         showDetailsScreen(recipe: recipe)
     }

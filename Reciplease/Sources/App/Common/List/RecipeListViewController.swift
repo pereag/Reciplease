@@ -37,5 +37,6 @@ final class RecipeListViewController: UIViewController {
     
     private func didPressDetailsButtonCellView() {
         viewModel.didPressDetailsButtonCellView(index: 1)
+        print("yoloooo")
     }
 }
