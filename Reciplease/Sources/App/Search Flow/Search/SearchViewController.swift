@@ -15,12 +15,25 @@ final class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel(to: viewModel)
-        tableView.dataSource = self
+        bindViewModel()
+        hideKeyboardWhenTappedAround()
         viewModel.viewDidLoad()
     }
-
-    private func bindViewModel(to: SearchViewModel) {
+    
+    private func addButtonDoneOnUITextView() {
+        let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem:    .flexibleSpace, target: nil, action: nil)
+        let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissMyKeyboard))
+        toolbar.setItems([flexSpace, doneBtn], animated: false)
+        toolbar.sizeToFit()
+        self.addElementField.inputAccessoryView = toolbar
+    }
+    
+    @objc func dismissMyKeyboard() {
+        view.endEditing(true)
+    }
+    
+    private func bindViewModel() {
         viewModel.items = { [weak self] items in
             DispatchQueue.main.async {
                 self?.items = items
@@ -56,7 +69,6 @@ final class SearchViewController: UIViewController {
             DispatchQueue.main.async {
                 self?.presentAlert(content: alertContent)
             }
-            
         }
     }
     

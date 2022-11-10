@@ -46,7 +46,6 @@ extension Screens {
 
     func createRecipeListViewController(recipes: [Recipe], delegate: RecipeViewControllerDelegate) -> UIViewController {
         let viewModel = RecipeListViewModel(
-            isFavorite: false,
             recipesList: recipes,
             delegate: delegate
         )
@@ -69,7 +68,6 @@ extension Screens {
     func createFavoriteRecipesListViewController(delegate: RecipeViewControllerDelegate) -> UIViewController {
         let repository = RecipeListRepository(stack: context.stack)
         let viewModel = RecipeListViewModel(
-            isFavorite: true,
             recipesList: [],
             repository: repository,
             delegate: delegate

@@ -74,6 +74,10 @@
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="mbt-ly-TvI"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="1rG-Hx-vxe"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.26830808080808077" green="0.21930364040926731" blue="0.15814187925414602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -243,24 +247,12 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZoR-fn-AkL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="390" height="194"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain"/>
-                                                    <connections>
-                                                        <action selector="didPressDetailsButton:" destination="KLV-Ur-NpM" eventType="touchUpInside" id="YmQ-5V-tNe"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ZoR-fn-AkL" firstAttribute="leading" secondItem="L8I-D4-l1b" secondAttribute="leading" id="8ET-hZ-gRv"/>
                                                 <constraint firstItem="IWS-tx-M7q" firstAttribute="trailing" secondItem="L8I-D4-l1b" secondAttribute="trailingMargin" id="8Mq-HN-k1w"/>
-                                                <constraint firstAttribute="trailing" secondItem="ZoR-fn-AkL" secondAttribute="trailing" id="9Ez-Y1-adS"/>
-                                                <constraint firstAttribute="bottom" secondItem="ZoR-fn-AkL" secondAttribute="bottom" id="BQv-VM-LmX"/>
                                                 <constraint firstAttribute="bottom" secondItem="1pM-zk-7al" secondAttribute="bottom" id="DoX-X1-BGj"/>
                                                 <constraint firstItem="IWS-tx-M7q" firstAttribute="leading" secondItem="L8I-D4-l1b" secondAttribute="leadingMargin" id="Hk2-d8-xeb"/>
                                                 <constraint firstAttribute="bottom" secondItem="tDH-sZ-yRg" secondAttribute="bottom" id="HpJ-Cf-Ml4"/>
-                                                <constraint firstItem="ZoR-fn-AkL" firstAttribute="top" secondItem="L8I-D4-l1b" secondAttribute="top" id="KbB-t2-kt8"/>
                                                 <constraint firstAttribute="trailing" secondItem="SFd-TR-byq" secondAttribute="trailing" constant="12" id="NWG-Ll-ZxG"/>
                                                 <constraint firstItem="1pM-zk-7al" firstAttribute="top" secondItem="L8I-D4-l1b" secondAttribute="top" constant="75" id="YWR-qx-pme"/>
                                                 <constraint firstItem="1pM-zk-7al" firstAttribute="leading" secondItem="L8I-D4-l1b" secondAttribute="leading" id="ZzS-re-mbA"/>
@@ -276,7 +268,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="detailsButton" destination="ZoR-fn-AkL" id="NcB-o8-brJ"/>
                                             <outlet property="dishImage" destination="tDH-sZ-yRg" id="SHn-Oi-QDL"/>
                                             <outlet property="gradienBackgroundView" destination="1pM-zk-7al" id="mUN-AS-wlM"/>
                                             <outlet property="ingredientsLabel" destination="IWS-tx-M7q" id="vPX-5c-lBI"/>

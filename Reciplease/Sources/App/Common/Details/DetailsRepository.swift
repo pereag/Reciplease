@@ -32,9 +32,7 @@ class DetailsRepository: DetailsRepositoryType {
         recipeObject.url = recipe.url
         recipeObject.ingredientLines = recipe.ingredientLines.joined(separator: ", ")
         recipeObject.duration = recipe.totalTime
-        stack.saveContext()
-        print("Add to favorite: ", recipeObject)
-        
+        stack.saveContext()        
     }
     
     func removeFromFavorites(url: String) {
@@ -45,7 +43,6 @@ class DetailsRepository: DetailsRepositoryType {
             let object = try stack.context.fetch(request)
             if !object.isEmpty {
                 stack.context.delete(object[0])
-                print("remove favorite : ", object[0])
                 stack.saveContext()
             }
         } catch {

@@ -60,7 +60,6 @@ final class HomeCoordinator: NSObject, UITabBarControllerDelegate {
         screens = Screens(context: context)
         tabBarController = UITabBarController(nibName: nil, bundle: nil)
         tabBarController.viewControllers = tabBarSource.items
-        tabBarController.selectedViewController = tabBarSource[.search]
 
         super.init()
 
@@ -71,16 +70,17 @@ final class HomeCoordinator: NSObject, UITabBarControllerDelegate {
     // MARK: - Coordinator
 
     func start() {
-        showSearch()
+        searchCoordinator = SearchCoordinator(presenter: tabBarSource[.search], screens: screens)
+        favoritesCoordinator = FavoritesCoordinator(presenter: tabBarSource[.favorites], screens: screens)
+
+        searchCoordinator?.start()
     }
 
     private func showSearch() {
-        searchCoordinator = SearchCoordinator(presenter: tabBarSource[.search], screens: screens)
         searchCoordinator?.start()
     }
 
     private func showFavorites() {
-        favoritesCoordinator = FavoritesCoordinator(presenter: tabBarSource[.favorites], screens: screens)
         favoritesCoordinator?.start()
     }
 }

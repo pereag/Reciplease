@@ -7,14 +7,13 @@
 
 import Foundation
 
-struct Recipe {
+struct Recipe: Equatable {
     let name: String
     let image: String
     let url : String
     let source: String
     let caution, ingredientLines: [String]
     let totalTime: Double
-    
 }
 
 extension Recipe {

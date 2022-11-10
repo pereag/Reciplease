@@ -28,17 +28,13 @@ final class FavoritesCoordinator {
     }
 
     private func showRecipesListScreen() {
-        DispatchQueue.main.async {
-            let viewController = self.screens.createFavoriteRecipesListViewController(delegate: self)
-            self.presenter.pushViewController(viewController, animated: true)
-        }
+        let viewController = self.screens.createFavoriteRecipesListViewController(delegate: self)
+        self.presenter.viewControllers = [viewController]
     }
     
     private func showDetailsScreen(recipe: Recipe) {
-        DispatchQueue.main.async {
-            let viewController = self.screens.createDetailsViewController(recipe: recipe)
-            self.presenter.pushViewController(viewController, animated: true)
-        }
+        let viewController = self.screens.createDetailsViewController(recipe: recipe)
+        self.presenter.pushViewController(viewController, animated: true)
     }
 }
 

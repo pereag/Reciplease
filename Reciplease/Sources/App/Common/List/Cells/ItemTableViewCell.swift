@@ -9,10 +9,6 @@ import UIKit
 import AlamofireImage
 
 final class ItemTableViewCell: UITableViewCell {
-    
-    var viewModel: RecipeListViewModel?
-    var index: IndexPath?
-    
     //MARK: Input
     
     @IBOutlet private weak var titleLabel: UILabel!
@@ -21,32 +17,21 @@ final class ItemTableViewCell: UITableViewCell {
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var timeView: UIView!
     @IBOutlet private weak var gradienBackgroundView: GradientView!
-    @IBOutlet private weak var detailsButton: UIButton!
-    
     
     // MARK: Output
     
-    @IBAction func didPressDetailsButton(_ sender: Any) {
-        guard let index = self.index else { return }
-        viewModel?.didPressDetailsButtonCellView(index: index.row)
-    }
-    
-    
-    
-    func configure(recipe: Recipe, viewModel: RecipeListViewModel, index: IndexPath) {
-        self.index = index
-        self.viewModel = viewModel
+    func configure(recipe: Recipe) {
         DispatchQueue.main.async {
             self.setGradientBackground()
         }
         titleLabel.text = recipe.name
-        ingredientsLabel.text = recipe.ingredientLines.joined(separator: " ,")
+        ingredientsLabel.text = recipe.ingredientLines.joined(separator: ", ")
         
         if let url = URL(string: recipe.image) {
             dishImage.af.setImage(withURL: url)
             dishImage.contentMode = .scaleAspectFill
         }
-        
+
         timeView.layer.cornerRadius = 5;
         timeView.layer.borderWidth = 2;
         timeView.layer.borderColor = UIColor.white.cgColor;

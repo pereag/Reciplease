@@ -19,24 +19,36 @@ final class RecipeListViewController: UIViewController {
     
     // MARK: - View life cycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        bind(to: viewModel)
-        tableView.dataSource = dataSource
-        tableView.delegate = dataSource
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.viewDidLoad()
     }
-    
-    private func bind(to: RecipeListViewModel) {
-        viewModel.items = { [weak self] items in
-            self?.dataSource.items = items
-            self?.dataSource.viewModel = self?.viewModel
-            self?.tableView.reloadData()
-        }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bindViewModel()
+        bindDataSource()
+
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
     }
     
-    private func didPressDetailsButtonCellView() {
-        viewModel.didPressDetailsButtonCellView(index: 1)
-        print("yoloooo")
+    private func bindViewModel() {
+        viewModel.items = { [weak self] items in
+            self?.dataSource.update(items: items)
+            self?.tableView.reloadData()
+        }
+        viewModel.displayedAlert = { [weak self] alertContent in
+            DispatchQueue.main.async {
+                self?.presentAlert(content: alertContent)
+            }
+        }
+    }
+
+    private func bindDataSource() {
+//        dataSource.didSelectItemAt = { index in
+//            viewModel.didPressItem(at: index)
+//        }
+        dataSource.didSelectItemAt = viewModel.didPressItem
     }
 }
