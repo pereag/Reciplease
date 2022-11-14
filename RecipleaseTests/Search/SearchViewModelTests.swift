@@ -13,7 +13,7 @@ final class SearchViewModelTests: XCTestCase {
     private var repository: MockRepository!
     private var delegate: MockDelegate!
     private var viewModel: SearchViewModel!
-
+    
     func testThatOnViewDidLoad_ThenEveryhtingIsCorrectlyLoaded() {
         let expectation1 = self.expectation(description: "Returned Title")
         let expectation2 = self.expectation(description: "Returned Search PlaceHolder")
@@ -63,17 +63,17 @@ final class SearchViewModelTests: XCTestCase {
         waitForExpectations(timeout: 1.0)
     }
     
-   func testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned() {
+    func testThatOnDidPressSearch_WithSuccess_ThenDelegateIsReturned() {
         let mockRepository = MockRepository(responses: .success)
         let mockDelegate = MockDelegate()
-       
+        
         viewModel = SearchViewModel(repository: mockRepository, delegate: mockDelegate)
-       
+        
         viewModel.didPressAdd(item: "Banana")
-       
+        
         viewModel.didPressSearch()
-       
-       XCTAssertTrue(!mockDelegate.returnedRecipes.isEmpty)
+        
+        XCTAssertTrue(!mockDelegate.returnedRecipes.isEmpty)
     }
     
     func testThatOnDidPressAdd_WithSuccess_IngredientsAppendItem() {
@@ -323,7 +323,7 @@ private extension MockRepository.Responses {
     enum MockError: Error {
         case mock
     }
-
+    
     static let mockRecipeResponse = try! JSONDecoder().decode(RecipeResponse.self, from: MockData.recipeData)
     static let mockRecipeResponseWithZeroItemsReturned = try! JSONDecoder().decode(RecipeResponse.self, from: MockData.recipeDataWithZeroResult)
 }

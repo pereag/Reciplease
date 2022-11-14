@@ -33,7 +33,7 @@ fileprivate class TabBarSource: TabBarSourceType {
         UINavigationController(nibName: nil, bundle: nil),
         UINavigationController(nibName: nil, bundle: nil)
     ]
-
+    
     init() {
         self[.search].tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
         self[.favorites].tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
@@ -41,45 +41,45 @@ fileprivate class TabBarSource: TabBarSourceType {
 }
 
 final class HomeCoordinator: NSObject, UITabBarControllerDelegate {
-
+    
     // MARK: - Properties
     
     private let presenter: UIWindow
     private let tabBarController: UITabBarController
     private let screens: Screens
     private var tabBarSource: TabBarSourceType = TabBarSource()
-
+    
     // MARK: - Flows
     private var searchCoordinator: SearchCoordinator?
     private var favoritesCoordinator: FavoritesCoordinator?
-
+    
     // MARK: - Init
-
+    
     init(presenter: UIWindow, context: Context) {
         self.presenter = presenter
         screens = Screens(context: context)
         tabBarController = UITabBarController(nibName: nil, bundle: nil)
         tabBarController.viewControllers = tabBarSource.items
-
+        
         super.init()
-
+        
         tabBarController.delegate = self
         self.presenter.rootViewController = tabBarController
     }
-
+    
     // MARK: - Coordinator
-
+    
     func start() {
         searchCoordinator = SearchCoordinator(presenter: tabBarSource[.search], screens: screens)
         favoritesCoordinator = FavoritesCoordinator(presenter: tabBarSource[.favorites], screens: screens)
-
+        
         searchCoordinator?.start()
     }
-
+    
     private func showSearch() {
         searchCoordinator?.start()
     }
-
+    
     private func showFavorites() {
         favoritesCoordinator?.start()
     }
@@ -91,7 +91,7 @@ extension HomeCoordinator {
         guard index < tabBarSource.items.count, let item = ViewControllerItem(rawValue: index) else {
             fatalError("Selected ViewController Index Out Of range")
         }
-
+        
         switch item {
         case .search:
             showSearch()

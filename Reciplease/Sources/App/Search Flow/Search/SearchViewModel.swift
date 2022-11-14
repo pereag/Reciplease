@@ -8,9 +8,9 @@
 import Foundation
 
 final class SearchViewModel {
-
+    
     // MARK: Private properties
-
+    
     private let repository: SearchRepositoryType
     private weak var delegate: SearchViewControllerDelegate?
     private var ingredients: [String] = [] {
@@ -18,9 +18,9 @@ final class SearchViewModel {
             items?(ingredients)
         }
     }
-
+    
     // MARK: - Initializer
-
+    
     init(
         repository: SearchRepositoryType,
         delegate: SearchViewControllerDelegate
@@ -29,7 +29,7 @@ final class SearchViewModel {
         self.delegate = delegate
         self.ingredients = []
     }
-
+    
     // MARK: - Outputs
     
     var titleText: ((String) -> Void)?
@@ -40,9 +40,9 @@ final class SearchViewModel {
     var searchButtontext: ((String) -> Void)?
     var displayedAlert: ((AlertContent) -> Void)?
     var items: (([String]) -> Void)?
-
+    
     // MARK: - Inputs
-
+    
     func viewDidLoad() {
         titleText?(Constants.title)
         searchPlaceholderText?(Constants.searchPlaceholder)
@@ -51,13 +51,13 @@ final class SearchViewModel {
         clearButtonText?(Constants.clearButton)
         searchButtontext?(Constants.searchButton)
     }
-
+    
     func didPressSearch() {
         if ingredients.count == 0 {
             let alertContent = AlertContent(
-               title: "Alert",
-               message: "Please add Foods.",
-               cancelTitle: "Ok"
+                title: "Alert",
+                message: "Please add Foods.",
+                cancelTitle: "Ok"
             )
             self.displayedAlert?(alertContent)
             return
@@ -67,24 +67,24 @@ final class SearchViewModel {
             case let .success(response):
                 if response.hits.count == 0 {
                     let alertContent = AlertContent(
-                       title: "Alert",
-                       message: "No result.",
-                       cancelTitle: "Ok"
+                        title: "Alert",
+                        message: "No result.",
+                        cancelTitle: "Ok"
                     )
                     self?.displayedAlert?(alertContent)
                     return
                 }
-
+                
                 let recipes: [Recipe] = response.hits.map { hit in
                     return Recipe(hit: hit)
                 }
-               
+                
                 self?.delegate?.shouldPresent(recipes: recipes)
             case let .failure(error):
                 let alertContent = AlertContent(
-                   title: "Alert",
-                   message: "An unexpected error has occurred.",
-                   cancelTitle: "Ok"
+                    title: "Alert",
+                    message: "An unexpected error has occurred.",
+                    cancelTitle: "Ok"
                 )
                 self?.displayedAlert?(alertContent)
                 print(error.localizedDescription)
@@ -95,9 +95,9 @@ final class SearchViewModel {
     func didPressAdd(item: String) {
         if item.isEmpty {
             let alertContent = AlertContent(
-               title: "Alert",
-               message: "Please fill in the field.",
-               cancelTitle: "Ok"
+                title: "Alert",
+                message: "Please fill in the field.",
+                cancelTitle: "Ok"
             )
             self.displayedAlert?(alertContent)
         } else {
@@ -105,9 +105,9 @@ final class SearchViewModel {
                 ingredients.append(item.lowercased())
             } else {
                 let alertContent = AlertContent(
-                   title: "Alert",
-                   message: "Food already present in the list.",
-                   cancelTitle: "Ok"
+                    title: "Alert",
+                    message: "Food already present in the list.",
+                    cancelTitle: "Ok"
                 )
                 self.displayedAlert?(alertContent)
             }
@@ -117,9 +117,9 @@ final class SearchViewModel {
     func didPressClear() {
         if ingredients.count <= 0 {
             let alertContent = AlertContent(
-               title: "Alert",
-               message: "No foods in the list to delete.",
-               cancelTitle: "Ok"
+                title: "Alert",
+                message: "No foods in the list to delete.",
+                cancelTitle: "Ok"
             )
             self.displayedAlert?(alertContent)
         } else {

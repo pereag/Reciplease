@@ -11,7 +11,7 @@ import Foundation
 final class Context {
     let client: HTTPClientType
     let stack: CoreDataStack
-
+    
     init() {
         client = HTTPClient()
         stack = CoreDataStack(modelName: "Reciplease", type: .prod)

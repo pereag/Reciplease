@@ -8,32 +8,32 @@
 import UIKit
 
 final class SearchCoordinator {
-
+    
     // MARK: - Properties
-
+    
     private let presenter: UINavigationController
     private let screens: Screens
     
     // MARK: - Initializer
-
+    
     init(presenter: UINavigationController, screens: Screens) {
         self.presenter = presenter
         self.screens = screens
     }
     
     // MARK: - Coodinator
-
+    
     func start() {
         showSearchScreen()
     }
-
+    
     private func showSearchScreen() {
         let viewController = screens.createSearchViewController(
             delegate: self
         )
         presenter.viewControllers = [viewController]
     }
-
+    
     private func showRecipesListScreen(recipes: [Recipe]) {
         DispatchQueue.main.async {
             let viewController = self.screens.createRecipeListViewController(recipes: recipes, delegate: self)

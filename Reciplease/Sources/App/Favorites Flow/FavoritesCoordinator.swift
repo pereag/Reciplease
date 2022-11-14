@@ -8,25 +8,25 @@
 import UIKit
 
 final class FavoritesCoordinator {
-
+    
     // MARK: - Properties
-
+    
     private let presenter: UINavigationController
     private let screens: Screens
     
     // MARK: - Initializer
-
+    
     init(presenter: UINavigationController, screens: Screens) {
         self.presenter = presenter
         self.screens = screens
     }
     
     // MARK: - Coodinator
-
+    
     func start() {
         showRecipesListScreen()
     }
-
+    
     private func showRecipesListScreen() {
         let viewController = self.screens.createFavoriteRecipesListViewController(delegate: self)
         self.presenter.viewControllers = [viewController]

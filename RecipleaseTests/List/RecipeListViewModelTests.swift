@@ -12,47 +12,69 @@ final class RecipeListViewModelTests: XCTestCase {
     
     private var viewModel: RecipeListViewModel!
     
-    func testThatOnDidPressDetailsButtonCellViewIfIndexExist() {
+    func testViewDidLoadIfRecipesListIsNotEmptyOrLocalyFetchedIsNoTrue() {
         let recipeList: [Recipe] = [.mock]
         let mockDelegate = MockDelegate()
-
-        viewModel = RecipeListViewModel(recipesList: recipeList, delegate: mockDelegate)
+        let mockRepository = MockRepository()
+        viewModel = RecipeListViewModel(recipesList: recipeList,  repository: mockRepository, delegate: mockDelegate)
+        viewModel.viewDidLoad()
         viewModel.didPressItem(at: 0)
-
         XCTAssertNotNil(mockDelegate.presentedRecipe)
         XCTAssertEqual(mockDelegate.presentedRecipe, .mock)
     }
     
     func testThatOnDidPressDetailsButtonCellViewIfIndexNotExist() {
-        let recipe: Recipe = Recipe(name: "yolo", image: "image", url: "htts", source: "rgrgg", caution: ["string"], ingredientLines: ["string"], totalTime: 2.0)
-        viewModel = RecipeListViewModel(recipesList: [recipe])
+        let recipeList: [Recipe] = [.mock]
+        let mockDelegate = MockDelegate()
+        viewModel = RecipeListViewModel(recipesList: recipeList, delegate: mockDelegate)
+        
+        viewModel.viewDidLoad()
         viewModel.didPressItem(at: 1)
+        
+        XCTAssertNil(mockDelegate.presentedRecipe)
     }
     
-    
-    func testThatOnViewDidLoadIfIsFavoritIsTrue() {
-        let recipe: Recipe = Recipe(name: "yolo", image: "image", url: "htts", source: "rgrgg", caution: ["string"], ingredientLines: ["string"], totalTime: 2.0)
-        viewModel = RecipeListViewModel(recipesList: [recipe])
+    func testViewDidLoadIfRecipesListIsEmpty() {
+        let expectation = self.expectation(description: "Display an error")
+        let recipeList: [Recipe] = []
+        let mockDelegate = MockDelegate()
+        let mockRepository = MockRepositoryWithZeroValue()
+        viewModel = RecipeListViewModel(recipesList: recipeList,  repository: mockRepository, delegate: mockDelegate)
+        
+        var counter = 0
+        
+        viewModel.displayedAlert = { alert in
+            if counter == 0 {
+                XCTAssertEqual(alert.title, "Alert")
+                XCTAssertEqual(alert.message, "No recipe found.")
+                XCTAssertEqual(alert.cancelTitle, "Ok")
+                expectation.fulfill()
+            }
+            counter+=1
+        }
+        
         viewModel.viewDidLoad()
-    }
-    
-    func testThatOnViewDidLoadIfIsFavoritIsFalse() {
-        let recipe: Recipe = Recipe(name: "yolo", image: "image", url: "htts", source: "rgrgg", caution: ["string"], ingredientLines: ["string"], totalTime: 2.0)
-        viewModel = RecipeListViewModel(recipesList: [recipe])
-        viewModel.viewDidLoad()
-    }
-    
-    func testThatOnViewDidLoadIfIsFavoritIsTrueWhenZeroRecipeIsAddedOnFavorites() {
-        viewModel = RecipeListViewModel(recipesList: [])
-        viewModel.viewDidLoad()
+        waitForExpectations(timeout: 1.0)
     }
 }
 
 private final class MockDelegate: RecipeViewControllerDelegate {
     var presentedRecipe: Recipe? = nil
-
+    
     func shouldPresent(recipe: Reciplease.Recipe) {
         presentedRecipe = recipe
+    }
+}
+
+private final class MockRepository: RecipeListRepositoryType {
+    func getRecipes() -> [Reciplease.Recipe] {
+        return [.mock]
+    }
+}
+
+private final class MockRepositoryWithZeroValue: RecipeListRepositoryType {
+    func getRecipes() -> [Reciplease.Recipe] {
+        return []
     }
 }
 

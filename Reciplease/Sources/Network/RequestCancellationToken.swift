@@ -9,16 +9,16 @@ import Foundation
 
 final class RequestCancellationToken {
     // MARK: - Init
-
+    
     init() {}
-
+    
     // MARK: - Deinit
-
+    
     deinit {
         willDealocate?()
     }
-
+    
     // MARK: - Properties
-
+    
     var willDealocate: (() -> Void)?
 }

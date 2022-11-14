@@ -9,9 +9,10 @@ import XCTest
 @testable import Reciplease
 
 final class DetailsViewModelTests: XCTestCase {
-
+    
     private var viewModel: DetailsViewModel!
     private var repository: DetailsRepository!
+    private let recipe: Recipe = Recipe(name: "test", image: "test", url: "test", source: "test", caution: ["test"], ingredientLines: ["test"], totalTime: 2.0)
     
     func testThatOnViewDidLoad_ThenEveryhtingIsCorrectlyLoaded() {
         let expectation1 = self.expectation(description: "Returned ingredients title")
@@ -35,31 +36,23 @@ final class DetailsViewModelTests: XCTestCase {
     }
     
     func testThatOnDidPressdidPressFavoriteWhenItReturnTrue() {
-        let recipe: Recipe = Recipe(name: "test", image: "test", url: "test", source: "test", caution: ["test"], ingredientLines: ["test"], totalTime: 2.0)
+        let recipe: Recipe = self.recipe
         viewModel = DetailsViewModel(recipe: recipe, repository: MockRepositoryCheckFavoriteReturnFalse())
         viewModel.viewDidLoad()
         XCTAssertTrue(viewModel.didPressFavorite())
-     }
+    }
     
     func testThatOnDidPressdidPressFavoriteWhenItReturnFalse() {
-        let recipe: Recipe = Recipe(name: "test", image: "test", url: "test", source: "test", caution: ["test"], ingredientLines: ["test"], totalTime: 2.0)
+        let recipe: Recipe = self.recipe
         viewModel = DetailsViewModel(recipe: recipe, repository: MockRepositoryCheckFavoriteReturnTrue())
         viewModel.viewDidLoad()
         XCTAssertTrue(!viewModel.didPressFavorite())
-     }
-    
-    func testThatViewDidLoad() {
-        let recipe: Recipe = Recipe(name: "test", image: "test", url: "test", source: "test", caution: ["test"], ingredientLines: ["test"], totalTime: 2.0)
-        viewModel = DetailsViewModel(recipe: recipe, repository: MockRepositoryCheckFavoriteReturnFalse())
-        viewModel.viewDidLoad()
-     }
-
-
+    }
 }
 
 
 private final class MockRepositoryCheckFavoriteReturnTrue: DetailsRepositoryType {
-    func checkIfIsFavorite(url: String) throws -> Bool {
+    func checkIfIsFavorite(url: String) -> Bool {
         return true
     }
     
@@ -73,7 +66,7 @@ private final class MockRepositoryCheckFavoriteReturnTrue: DetailsRepositoryType
 }
 
 private final class MockRepositoryCheckFavoriteReturnFalse: DetailsRepositoryType {
-    func checkIfIsFavorite(url: String) throws -> Bool {
+    func checkIfIsFavorite(url: String) -> Bool {
         return false
     }
     

@@ -10,8 +10,10 @@ import UIKit
 final class SearchViewController: UIViewController {
     
     var viewModel: SearchViewModel!
-
+    
     private var items: [String] = []
+    
+    // MARK: Cycle Life
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +75,7 @@ final class SearchViewController: UIViewController {
     }
     
     // MARK: Input
-
+    
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var addElementField: UITextField!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -86,7 +88,6 @@ final class SearchViewController: UIViewController {
     
     var displayedAlert: ((AlertContent) -> Void)?
     
-
     @IBAction private func didPressSearch(_ sender: Any) {
         viewModel.didPressSearch()
     }
@@ -99,12 +100,12 @@ final class SearchViewController: UIViewController {
         viewModel.didPressClear()
     }
 }
- 
+
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = items[indexPath.item]

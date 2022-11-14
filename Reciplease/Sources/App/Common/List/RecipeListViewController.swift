@@ -15,20 +15,18 @@ final class RecipeListViewController: UIViewController {
     // MARK: Input
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: Output
-    
     // MARK: - View life cycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.viewDidLoad()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
         bindDataSource()
-
+        
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
     }
@@ -44,11 +42,8 @@ final class RecipeListViewController: UIViewController {
             }
         }
     }
-
+    
     private func bindDataSource() {
-//        dataSource.didSelectItemAt = { index in
-//            viewModel.didPressItem(at: index)
-//        }
         dataSource.didSelectItemAt = viewModel.didPressItem
     }
 }

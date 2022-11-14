@@ -17,11 +17,11 @@ final class SearchRepository: SearchRepositoryType {
     private let token = RequestCancellationToken()
     private let parser = JSONParser()
     private let bulder = RequestBuilder()
-
+    
     init(client: HTTPClientType) {
         self.client = client
     }
-
+    
     func getRecipe(for ingredients: [String], callback: @escaping (Result<RecipeResponse, Error>) -> Void) {
         let endpoint = RecipeEndpoint(ingredients: ingredients)
         guard let request = bulder.build(from: endpoint) else { return }

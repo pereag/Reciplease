@@ -18,7 +18,7 @@ struct RecipeResponse: Codable, Equatable {
     struct Hit: Codable, Equatable {
         
         let recipe: Recipe
-
+        
         // MARK: - Recipe
         struct Recipe: Codable, Equatable {
             let label: String

@@ -8,13 +8,13 @@
 import UIKit
 
 public class Screens {
-
+    
     // MARK: - Properties
-
+    
     let storyBoard = UIStoryboard(name: "Main", bundle: Bundle(for: Screens.self))
-
+    
     let context: Context
-
+    
     init(context: Context) {
         self.context = context
     }
@@ -43,7 +43,7 @@ extension Screens {
         viewController.viewModel = viewModel
         return viewController
     }
-
+    
     func createRecipeListViewController(recipes: [Recipe], delegate: RecipeViewControllerDelegate) -> UIViewController {
         let viewModel = RecipeListViewModel(
             recipesList: recipes,
@@ -64,7 +64,7 @@ extension Screens {
         viewController.viewModel = viewModel
         return viewController
     }
-
+    
     func createFavoriteRecipesListViewController(delegate: RecipeViewControllerDelegate) -> UIViewController {
         let repository = RecipeListRepository(stack: context.stack)
         let viewModel = RecipeListViewModel(

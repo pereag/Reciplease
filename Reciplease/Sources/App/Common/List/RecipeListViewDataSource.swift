@@ -10,11 +10,11 @@ import UIKit
 final class RecipeListViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     private var items: [Recipe] = []
-
+    
     func update(items: [Recipe]) {
         self.items = items
     }
-
+    
     var didSelectItemAt: ((Int) -> Void)?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,7 +28,7 @@ final class RecipeListViewDataSource: NSObject, UITableViewDelegate, UITableView
         cell.configure(recipe: items[indexPath.row])
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard items.indices.contains(indexPath.row) else { return }
         didSelectItemAt?(indexPath.row)

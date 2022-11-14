@@ -16,13 +16,18 @@ class DetailsRepository: DetailsRepositoryType {
         self.stack = stack
     }
     
-    func checkIfIsFavorite(url: String) throws -> Bool {
+    func checkIfIsFavorite(url: String) -> Bool {
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
         request.predicate = NSPredicate(format: "url == %@", url)
         request.sortDescriptors = [NSSortDescriptor(keyPath: \RecipeEntity.url, ascending: true)]
         
-        let result = try stack.context.fetch(request)
-        return !result.isEmpty
+        let result = try? stack.context.fetch(request)
+    
+        if let result {
+            return !result.isEmpty
+        }
+
+        return false
     }
     
     func addToFavorites(recipe: Recipe) {
@@ -52,7 +57,7 @@ class DetailsRepository: DetailsRepositoryType {
 }
 
 protocol DetailsRepositoryType {
-    func checkIfIsFavorite(url: String) throws -> Bool
+    func checkIfIsFavorite(url: String) -> Bool
     func addToFavorites(recipe: Recipe)
     func removeFromFavorites(url: String)
 }

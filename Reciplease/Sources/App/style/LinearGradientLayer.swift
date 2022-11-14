@@ -26,6 +26,8 @@ public final class LinearGradientLayer: CALayer {
         }
     }
     
+    // MARK: Properties
+    
     public var direction: Direction = .vertical
     public var colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
     public var colors: [CGColor]?
@@ -33,7 +35,7 @@ public final class LinearGradientLayer: CALayer {
     public var options: CGGradientDrawingOptions = CGGradientDrawingOptions(rawValue: 0)
     
     // MARK: - Lifecycle
-
+    
     public required override init() {
         super.init()
         masksToBounds = true
@@ -62,7 +64,7 @@ public final class LinearGradientLayer: CALayer {
     }
     
     // MARK: - Private
-
+    
     private func transform(_ point: CGPoint) -> CGPoint {
         return CGPoint(x: bounds.width * point.x, y: bounds.height * point.y)
     }

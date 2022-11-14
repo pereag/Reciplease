@@ -9,7 +9,12 @@ import Foundation
 import CoreData
 
 class RecipeListRepository: RecipeListRepositoryType {
+    
+    // MARK: Properties
+    
     private let stack: CoreDataStack
+    
+    // MARK: Init
     
     init(stack: CoreDataStack) {
         self.stack = stack

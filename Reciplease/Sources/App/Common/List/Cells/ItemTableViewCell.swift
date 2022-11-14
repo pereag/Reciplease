@@ -18,7 +18,7 @@ final class ItemTableViewCell: UITableViewCell {
     @IBOutlet private weak var timeView: UIView!
     @IBOutlet private weak var gradienBackgroundView: GradientView!
     
-    // MARK: Output
+    // MARK: Cycle Life
     
     func configure(recipe: Recipe) {
         DispatchQueue.main.async {
@@ -31,7 +31,7 @@ final class ItemTableViewCell: UITableViewCell {
             dishImage.af.setImage(withURL: url)
             dishImage.contentMode = .scaleAspectFill
         }
-
+        
         timeView.layer.cornerRadius = 5;
         timeView.layer.borderWidth = 2;
         timeView.layer.borderColor = UIColor.white.cgColor;
