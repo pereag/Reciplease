@@ -111,7 +111,7 @@
                                         <rect key="frame" x="249" y="118" width="59" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="WyC-8p-HTM"/>
-                                            <constraint firstAttribute="width" constant="59" id="eHq-41-gSp"/>
+                                            <constraint firstAttribute="width" secondItem="P42-AW-a2A" secondAttribute="height" multiplier="59:31" id="li8-7X-Eg3"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Add">

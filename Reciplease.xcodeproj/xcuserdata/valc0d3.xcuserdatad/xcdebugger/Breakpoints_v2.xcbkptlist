@@ -288,5 +288,53 @@
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E1DBE538-D1D4-4D21-8A97-4D76651313F1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipleaseTests/Search/DetailsRepositoryTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "testWhenResponsesReturnedIsFailure()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E1DBE538-D1D4-4D21-8A97-4D76651313F1 - d7548d30eceeaba1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Reciplease.RecipeResponse, Swift.Error&gt;) -&gt; () in RecipleaseTests.SearchRepositoryTests.testWhenResponsesReturnedIsFailure() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/valc0d3/Developer/mobile/swift/Reciplease/RecipleaseTests/Search/DetailsRepositoryTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "600">
+               </Location>
+               <Location
+                  uuid = "E1DBE538-D1D4-4D21-8A97-4D76651313F1 - d7548d30eceeaba1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Reciplease.RecipeResponse, Swift.Error&gt;) -&gt; () in RecipleaseTests.SearchRepositoryTests.testWhenResponsesReturnedIsFailure() -&gt; ()"
+                  moduleName = "RecipleaseTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/valc0d3/Developer/mobile/swift/Reciplease/RecipleaseTests/Search/DetailsRepositoryTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "608">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
