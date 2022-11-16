@@ -33,28 +33,6 @@ final class SearchRepositoryTests: XCTestCase {
         waitForExpectations(timeout: 1.0)
     }
     
-    func testWhenResponsesReturnedIsSuccessBut() {
-        let expectation = self.expectation(description: "Returned response")
-        let client = MockHttpClient(responses: .success)
-        let repository = SearchRepository(client: client)
-        
-        repository.getRecipe(
-            for: [],
-            callback: { result in
-                switch result {
-                case .success(let response):
-                    XCTAssertEqual(response.hits.count, 20)
-                case .failure(_):
-                    XCTFail()
-                }
-            
-                expectation.fulfill()
-            }
-        )
-
-        waitForExpectations(timeout: 1.0)
-    }
-    
     func testWhenResponsesReturnedIsFailure() {
         let expectation = self.expectation(description: "Returned response")
         let client = MockHttpClient(responses: .failure)
