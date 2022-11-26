@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController, UITextViewDelegate {
     
     var viewModel: SearchViewModel!
     
@@ -18,7 +18,8 @@ final class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
-        hideKeyboardWhenTappedAround()
+        self.hideKeyboardWhenTappedAround()
+        self.addButtonDoneOnUITextView()
         viewModel.viewDidLoad()
     }
     

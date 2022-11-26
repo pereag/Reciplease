@@ -56,6 +56,28 @@ final class RecipeListViewModelTests: XCTestCase {
         viewModel.viewDidLoad()
         waitForExpectations(timeout: 1.0)
     }
+    
+    func testViewDidLoadIfRepositoryIsNil() {
+        let expectation = self.expectation(description: "not display an error")
+        let recipeList: [Recipe] = []
+        let mockDelegate = MockDelegate()
+        viewModel = RecipeListViewModel(recipesList: recipeList,  repository: nil, delegate: mockDelegate)
+        
+        // var counter = 0
+        
+        /* viewModel.displayedAlert = { alert in
+            if counter == 0 {
+                XCTAssertEqual(alert.title, "Alert")
+                XCTAssertEqual(alert.message, "No recipe found.")
+                XCTAssertEqual(alert.cancelTitle, "Ok")
+                expectation.fulfill()
+            }
+            counter+=1
+        } */
+        
+        viewModel.viewDidLoad()
+        //waitForExpectations(timeout: 1.0)
+    }
 }
 
 private final class MockDelegate: RecipeViewControllerDelegate {
