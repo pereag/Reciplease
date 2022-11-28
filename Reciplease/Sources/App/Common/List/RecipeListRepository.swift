@@ -23,15 +23,12 @@ class RecipeListRepository: RecipeListRepositoryType {
     func getRecipes() -> [Recipe] {
         var recipes: [Recipe] = []
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
-        do {
-            let objects = try stack.context.fetch(request)
-            for object in objects {
-                let ingredientLines = object.ingredientLines
-                let ingredientLinesArray = ingredientLines!.components(separatedBy: ", ")
-                recipes.append(Recipe(name: object.name!, image: object.image!, url: object.url!, source: "string", caution: ["string"], ingredientLines: ingredientLinesArray, totalTime: object.duration))
-            }
-        } catch {
-            print(error)
+        let objects = try? stack.context.fetch(request)
+        guard let objects else { return [] }
+        for object in objects {
+            let ingredientLines = object.ingredientLines
+            let ingredientLinesArray = ingredientLines!.components(separatedBy: ", ")
+            recipes.append(Recipe(name: object.name!, image: object.image!, url: object.url!, source: "string", caution: ["string"], ingredientLines: ingredientLinesArray, totalTime: object.duration))
         }
         
         return recipes

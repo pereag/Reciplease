@@ -59,24 +59,20 @@ final class RecipeListViewModelTests: XCTestCase {
     
     func testViewDidLoadIfRepositoryIsNil() {
         let expectation = self.expectation(description: "not display an error")
+        expectation.isInverted = true
         let recipeList: [Recipe] = []
         let mockDelegate = MockDelegate()
-        viewModel = RecipeListViewModel(recipesList: recipeList,  repository: nil, delegate: mockDelegate)
         
-        // var counter = 0
+        viewModel = RecipeListViewModel(recipesList: recipeList, delegate: mockDelegate)
         
-        /* viewModel.displayedAlert = { alert in
-            if counter == 0 {
-                XCTAssertEqual(alert.title, "Alert")
-                XCTAssertEqual(alert.message, "No recipe found.")
-                XCTAssertEqual(alert.cancelTitle, "Ok")
-                expectation.fulfill()
-            }
-            counter+=1
-        } */
+        viewModel.displayedAlert = { _ in
+            XCTFail()
+            expectation.fulfill()
+        }
         
         viewModel.viewDidLoad()
-        //waitForExpectations(timeout: 1.0)
+        
+        waitForExpectations(timeout: 1.0)
     }
 }
 

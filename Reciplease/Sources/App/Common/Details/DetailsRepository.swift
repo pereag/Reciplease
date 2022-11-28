@@ -37,21 +37,21 @@ class DetailsRepository: DetailsRepositoryType {
         recipeObject.url = recipe.url
         recipeObject.ingredientLines = recipe.ingredientLines.joined(separator: ", ")
         recipeObject.duration = recipe.totalTime
-        stack.saveContext()        
+
+        if stack.context.hasChanges {
+            stack.saveContext()
+        }
     }
     
     func removeFromFavorites(url: String) {
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
         request.predicate = NSPredicate(format: "url == %@", url)
         
-        do {
-            let object = try stack.context.fetch(request)
-            if !object.isEmpty {
-                stack.context.delete(object[0])
-                stack.saveContext()
-            }
-        } catch {
-            print(error)
+        let object = try? stack.context.fetch(request)
+        guard let object else { return }
+        if !object.isEmpty, stack.context.hasChanges {
+            stack.context.delete(object[0])
+            stack.saveContext()
         }
     }
 }

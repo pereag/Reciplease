@@ -40,6 +40,7 @@
 		D8C197D528F475C4001B0F42 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = D8C197D428F475C4001B0F42 /* AlamofireImage */; };
 		D8C197D828F47862001B0F42 /* LinearGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C197D728F47862001B0F42 /* LinearGradientLayer.swift */; };
 		D8C197DA28F47875001B0F42 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C197D928F47874001B0F42 /* GradientView.swift */; };
+		D8D52C3A29351C8500640E51 /* RecipeListRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D52C3929351C8500640E51 /* RecipeListRepositoryTests.swift */; };
 		D8E6EA432922AAF800363783 /* SearchRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E6EA422922AAF800363783 /* SearchRepositoryTests.swift */; };
 		D8E9FDC729112DAC00D48524 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E9FDC629112DAC00D48524 /* CoreDataStack.swift */; };
 		D8F0B140291BA25F007DC5D9 /* RecipeListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F0B13F291BA25F007DC5D9 /* RecipeListRepository.swift */; };
@@ -99,6 +100,7 @@
 		D8BB4FDD28854CF0003C5D60 /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C197D728F47862001B0F42 /* LinearGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGradientLayer.swift; sourceTree = "<group>"; };
 		D8C197D928F47874001B0F42 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		D8D52C3929351C8500640E51 /* RecipeListRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListRepositoryTests.swift; sourceTree = "<group>"; };
 		D8E6EA422922AAF800363783 /* SearchRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryTests.swift; sourceTree = "<group>"; };
 		D8E9FDC629112DAC00D48524 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D8F0B13F291BA25F007DC5D9 /* RecipeListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListRepository.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				D8029A5628EAE2FE0043BAAE /* RecipeListViewModelTests.swift */,
+				D8D52C3929351C8500640E51 /* RecipeListRepositoryTests.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				D8E6EA432922AAF800363783 /* SearchRepositoryTests.swift in Sources */,
 				D8029A5728EAE2FE0043BAAE /* RecipeListViewModelTests.swift in Sources */,
 				D8AB7E9A28FDB18400D2291E /* MockData.swift in Sources */,
+				D8D52C3A29351C8500640E51 /* RecipeListRepositoryTests.swift in Sources */,
 				D8B5534928A16CC200AC1193 /* SearchViewModelTests.swift in Sources */,
 				D8AEE9AC29196B5700D30DFE /* DetailsViewModelTests.swift in Sources */,
 			);

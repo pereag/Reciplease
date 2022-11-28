@@ -22,12 +22,14 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ingredients :" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tfn-ky-aPU">
                                         <rect key="frame" x="12" y="23" width="164.5" height="26.5"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Ingredients label" label="Your ingredients:"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTT-W7-xo8">
                                         <rect key="frame" x="244" y="23" width="64" height="34.5"/>
+                                        <accessibility key="accessibilityConfiguration" hint="On did press button, ingredients table is cleared" label="Clear "/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Clear">
                                             <backgroundConfiguration key="background">
@@ -41,12 +43,13 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BR-xh-wGI">
                                         <rect key="frame" x="12" y="350.5" width="296" height="34.5"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Tap on this button for displayed an recipe list" label="Search for recipes"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Search for recipes">
                                             <backgroundConfiguration key="background">
                                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                             </backgroundConfiguration>
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="didPressSearch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SiH-U7-V82"/>
@@ -66,12 +69,16 @@
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V6l-xp-ECE">
                                                             <rect key="frame" x="16" y="0.0" width="264" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <accessibility key="accessibilityConfiguration" hint="Name of the ingredient" label="Ingredient name"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <bool key="isElement" value="YES"/>
+                                                </accessibility>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
@@ -101,6 +108,8 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lemon, Cheese, Sausages ..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ks5-FZ-6tv">
                                         <rect key="frame" x="12" y="116" width="220" height="34"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Field for add an ingredient" label="Ingredient field"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="Q0j-gW-Tra"/>
                                         </constraints>
@@ -109,6 +118,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P42-AW-a2A">
                                         <rect key="frame" x="249" y="118" width="59" height="31"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Tap on button &quot;add&quot; for an ingredient entered in the ingredients field" label="Add"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="WyC-8p-HTM"/>
                                             <constraint firstAttribute="width" secondItem="P42-AW-a2A" secondAttribute="height" multiplier="59:31" id="li8-7X-Eg3"/>
@@ -118,7 +128,7 @@
                                             <backgroundConfiguration key="background">
                                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                             </backgroundConfiguration>
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="didPressAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HnJ-ZK-spZ"/>
@@ -126,6 +136,7 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in your fridge ? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntU-Nj-jRM">
                                         <rect key="frame" x="12" y="63.5" width="296" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Title of this screen" label="What's in your fridge"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -194,6 +205,9 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tDH-sZ-yRg">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="194"/>
+                                                    <accessibility key="accessibilityConfiguration" hint="Image of the recipe" label="Image of the recipe">
+                                                        <bool key="isElement" value="NO"/>
+                                                    </accessibility>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="tDH-sZ-yRg" secondAttribute="height" multiplier="214:97" id="LrB-w2-49f"/>
                                                         <constraint firstAttribute="height" constant="194" id="fQw-AG-Pbh"/>
@@ -205,6 +219,7 @@
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWS-tx-M7q">
                                                     <rect key="frame" x="16" y="152.5" width="288" height="25.5"/>
+                                                    <accessibility key="accessibilityConfiguration" hint="Ingredient list of the recipe"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -215,6 +230,7 @@
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qN9-qR-tSS">
                                                             <rect key="frame" x="100" y="12" width="22" height="19"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <accessibility key="accessibilityConfiguration" hint="Duration label image" label="Duration label image"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="22" id="Eu2-I6-dtr"/>
                                                                 <constraint firstAttribute="height" constant="20.329999999999998" id="pQ5-jI-w5x"/>
@@ -223,6 +239,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tl3-Vz-KzZ">
                                                             <rect key="frame" x="8" y="11" width="87" height="21"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <accessibility key="accessibilityConfiguration" hint="Display duration of recipe preparation"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="G7W-v2-wap"/>
                                                             </constraints>
@@ -244,6 +261,7 @@
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titre" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUS-N6-1hX">
                                                     <rect key="frame" x="16" y="119" width="288" height="25.5"/>
+                                                    <accessibility key="accessibilityConfiguration" hint="Title of recipe"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -326,12 +344,16 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCc-eW-XP9">
                                         <rect key="frame" x="8" y="216" width="304" height="25.5"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Title of recipe"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" hint="Image of the recipe" label="Image of the recipe">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="ENl-xT-BVb" secondAttribute="bottom" constant="13.67" id="KMJ-dg-Ixr"/>
                                     <constraint firstItem="RCc-eW-XP9" firstAttribute="leading" secondItem="ReK-n6-T4f" secondAttribute="leading" constant="8" id="Qyp-IC-oDQ"/>
@@ -344,12 +366,13 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJP-EM-poM">
                                 <rect key="frame" x="12" y="515.5" width="296" height="35"/>
+                                <accessibility key="accessibilityConfiguration" hint="Redirect to the recipe page from Safari" label="Get directions label"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Get directions label">
                                     <backgroundConfiguration key="background">
                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                                     </backgroundConfiguration>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="didPressGetDirections:" destination="7FF-mI-o8O" eventType="touchUpInside" id="Zad-yn-qRO"/>
@@ -357,6 +380,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ingredients label :" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzJ-kf-MGK">
                                 <rect key="frame" x="12" y="323.5" width="296" height="26.5"/>
+                                <accessibility key="accessibilityConfiguration" hint="Ingredients label " label="Your ingredients:"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -379,6 +403,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95i-4V-ZeP">
                                         <rect key="frame" x="8" y="11" width="87" height="21"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Display duration of recipe preparation"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Wga-wi-eDp"/>
                                         </constraints>
