@@ -7,6 +7,6 @@
 
 import CoreData
 
-class RecipeEntity: NSManagedObject {
+final class RecipeEntity: NSManagedObject {
     
 }

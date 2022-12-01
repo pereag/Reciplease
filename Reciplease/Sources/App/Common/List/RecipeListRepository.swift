@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class RecipeListRepository: RecipeListRepositoryType {
+final class RecipeListRepository: RecipeListRepositoryType {
     
     // MARK: Properties
     

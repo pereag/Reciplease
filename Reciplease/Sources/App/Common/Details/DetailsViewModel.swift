@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DetailsViewModel {
+final class DetailsViewModel {
     
     // MARK: Properties
     

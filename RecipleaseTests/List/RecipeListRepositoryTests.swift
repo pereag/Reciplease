@@ -32,12 +32,12 @@ final class RecipeListRepositoryTests : XCTestCase {
 
     private func addMockRecipe(in stack: CoreDataStack) {
         let recipe = Recipe(
-            name: "",
-            image: "",
-            url: "",
-            source: "",
-            caution: [],
-            ingredientLines: [],
+            name: "test",
+            image: "https://truck.png",
+            url: "www.google.com",
+            source: "test",
+            caution: ["test"],
+            ingredientLines: ["test", "toto"],
             totalTime: 1.0
         )
         let recipeObject = RecipeEntity(context: stack.context)

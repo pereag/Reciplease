@@ -9,25 +9,36 @@ import Foundation
 import CoreData
 
 
-class DetailsRepository: DetailsRepositoryType {
+final class DetailsRepository: DetailsRepositoryType {
     private let stack: CoreDataStack
     
     init(stack: CoreDataStack) {
         self.stack = stack
     }
-    
+
+    enum CustomError: Error {
+        case toto
+    }
+
     func checkIfIsFavorite(url: String) -> Bool {
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
         request.predicate = NSPredicate(format: "url == %@", url)
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \RecipeEntity.url, ascending: true)]
+        request.sortDescriptors = [
+            NSSortDescriptor(
+                keyPath: \RecipeEntity.url,
+                ascending: true
+            )
+        ]
+
+        var result: [RecipeEntity] = []
         
-        let result = try? stack.context.fetch(request)
-    
-        if let result {
-            return !result.isEmpty
+        do {
+            result = try stack.context.fetch(request)
+        } catch {
+            assertionFailure(error.localizedDescription)
         }
 
-        return false
+        return !result.isEmpty
     }
     
     func addToFavorites(recipe: Recipe) {
@@ -46,11 +57,17 @@ class DetailsRepository: DetailsRepositoryType {
     func removeFromFavorites(url: String) {
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
         request.predicate = NSPredicate(format: "url == %@", url)
-        
-        let object = try? stack.context.fetch(request)
-        guard let object else { return }
-        if !object.isEmpty, stack.context.hasChanges {
-            stack.context.delete(object[0])
+
+        var result: [RecipeEntity] = []
+
+        do {
+            result = try stack.context.fetch(request)
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
+
+        if let object = result.first {
+            stack.context.delete(object)
             stack.saveContext()
         }
     }
